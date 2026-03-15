@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Wraper from '../components/Architure/Wraper';
+import { Link } from 'react-router-dom';
 
 // Separate components for better organization
 const StatCard = ({ value, label }) => (
@@ -21,36 +22,53 @@ const ValueCard = ({ icon, title, description }) => (
   </div>
 );
 
-const TeamMember = ({ name, role, bio, image, socialLinks }) => (
-  <div className="bg-white rounded-xl shadow-lg overflow-hidden group border border-gray-100 hover:border-blue-500 transition-all duration-300">
-    <div className="relative overflow-hidden h-64">
-      <img 
-        src={image} 
-        alt={name}
-        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-    </div>
-    <div className="p-6">
-      <h3 className="text-xl font-bold text-gray-900 mb-1">{name}</h3>
-      <p className="text-blue-600 font-medium mb-3">{role}</p>
-      <p className="text-gray-600 text-sm leading-relaxed">{bio}</p>
-      
-      {/* Social Links */}
-      {socialLinks && (
-        <div className="flex space-x-4 mt-4">
-          {socialLinks.linkedin && (
-            <a href={socialLinks.linkedin} className="text-gray-400 hover:text-blue-600 transition-colors">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-              </svg>
-            </a>
-          )}
+const TeamMember = ({ name, role, bio }) => {
+  // Function to get initials from name
+  const getInitials = (name) => {
+    return name
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+      .toUpperCase();
+  };
+
+  // Function to add blue background to first and last character
+  const formatName = (name) => {
+    if (name.length <= 2) return name;
+    const firstChar = name.charAt(0);
+    const lastChar = name.charAt(name.length - 1);
+    const middlePart = name.slice(1, -1);
+    
+    return (
+      <span className="text-xl font-bold text-gray-900 mb-1">
+        <span className="bg-blue-600 text-white px-1 rounded-l">{firstChar}</span>
+        {middlePart}
+        <span className="bg-blue-600 text-white px-1 rounded-r">{lastChar}</span>
+      </span>
+    );
+  };
+
+  return (
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden group border border-gray-100 hover:border-blue-500 transition-all duration-300">
+      {/* Avatar Placeholder with Initials */}
+      <div className="h-64 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+        <div className="w-32 h-32 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-4 border-white/30">
+          <span className="text-5xl font-bold text-white">
+            {getInitials(name)}
+          </span>
         </div>
-      )}
+      </div>
+      
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-1">
+          {formatName(name)}
+        </h3>
+        <p className="text-blue-600 font-medium mb-3">{role}</p>
+        <p className="text-gray-600 text-sm leading-relaxed">{bio}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const About = () => {
   // State for interactive elements
@@ -59,9 +77,9 @@ const About = () => {
 
   // Company statistics
   const statistics = [
-    { id: 1, value: '$2.5B+', label: 'Assets Under Management' },
+    { id: 1, value: '₹200cr', label: 'Loan Disbursed' },
     { id: 2, value: '15,000+', label: 'Happy Clients' },
-    { id: 3, value: '25+', label: 'Years of Excellence' },
+    { id: 3, value: '5+', label: 'Years of Excellence' },
     { id: 4, value: '98%', label: 'Client Retention Rate' },
   ];
 
@@ -105,35 +123,29 @@ const About = () => {
     }
   ];
 
-  // Leadership team data
+  // Leadership team data (removed image and socialLinks)
   const leadershipTeam = [
     {
       id: 1,
-      name: 'Sarah Johnson',
-      role: 'CEO & Founder',
-      bio: '25+ years in investment banking and wealth management. Former Managing Director at Morgan Stanley.',
-      image: '/images/team/sarah-johnson.jpg',
-      socialLinks: { linkedin: '#' }
+      name: 'Sanjay Giri',
+      role: 'CEO',
+      bio: '5+ years in investment banking and wealth management. Former Managing Director at Morgan Stanley.',
     },
     {
       id: 2,
-      name: 'Michael Chen',
-      role: 'Chief Investment Officer',
+      name: 'Sonu Giri',
+      role: 'Manager',
       bio: 'CFA charterholder with expertise in portfolio management and risk assessment.',
-      image: '/images/team/michael-chen.jpg',
-      socialLinks: { linkedin: '#' }
     },
     {
       id: 3,
-      name: 'Emily Rodriguez',
-      role: 'Head of Client Relations',
-      bio: 'Dedicated to building lasting relationships through personalized financial guidance.',
-      image: '/images/team/emily-rodriguez.jpg',
-      socialLinks: { linkedin: '#' }
-    }
+      name: 'Priya Sharma',
+      role: 'Senior Financial Advisor',
+      bio: '15+ years experience in wealth management and retirement planning.',
+    },
   ];
 
-  // Milestones data
+  // Milestones data (corrected timeline format)
   const milestones = [
     { year: '1998', event: 'Company founded in New York City' },
     { year: '2005', event: 'Expanded to West Coast operations' },
@@ -148,7 +160,7 @@ const About = () => {
         {/* Hero Section with Parallax Effect */}
         <section className="relative bg-gradient-to-r from-blue-50 via-white to-blue-50 text-gray-900 overflow-hidden">
           <div className="absolute inset-0 bg-white/50" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+          <div className="relative flex flex-col items-center justify-center mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
             <h1 className="text-4xl md:text-6xl text-center font-bold mb-6 animate-fade-in text-gray-900">
               Building Financial Futures
             </h1>
@@ -158,7 +170,7 @@ const About = () => {
             </p>
             <button 
               onClick={() => document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-blue-600 text-white  text-center px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105"
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105"
             >
               Discover Our Story
             </button>
@@ -284,13 +296,17 @@ const About = () => {
                   </button>
                 </div>
 
-                {/* Timeline */}
+                {/* Timeline - Fixed with proper spacing and alignment */}
                 <div className="mt-8 space-y-4">
                   {milestones.map((milestone, index) => (
-                    <div key={index} className="flex items-center">
-                      <div className="w-20 font-bold text-blue-600">{milestone.year}</div>
-                      <div className="flex-1 border-l-2 border-gray-200 pl-4 py-2 text-gray-700">
-                        {milestone.event}
+                    <div key={index} className="flex items-start">
+                      <div className="w-24 flex-shrink-0">
+                        <span className="inline-block bg-blue-600 text-white px-3 py-1 rounded-lg text-sm font-bold">
+                          {milestone.year}
+                        </span>
+                      </div>
+                      <div className="flex-1 pl-4 border-l-2 border-blue-200 ml-2">
+                        <p className="text-gray-700 py-1">{milestone.event}</p>
                       </div>
                     </div>
                   ))}
@@ -298,14 +314,15 @@ const About = () => {
               </div>
 
               <div className="relative">
-                <img 
-                  src="/images/about/office-history.jpg" 
-                  alt="FinanceCorp through the years" 
-                  className="rounded-2xl shadow-2xl border border-gray-200"
-                />
+                <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl shadow-2xl p-8 text-white">
+                  <p className="text-2xl font-bold mb-4">Serving clients for</p>
+                  <p className="text-6xl font-bold mb-2">25+</p>
+                  <p className="text-xl">Years of Excellence</p>
+                </div>
                 <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg border border-gray-100">
-                  <p className="text-sm text-gray-600">Serving clients for</p>
-                  <p className="text-3xl font-bold text-blue-600">25+ Years</p>
+                  <p className="text-sm text-gray-600">Trusted by</p>
+                  <p className="text-3xl font-bold text-blue-600">15,000+</p>
+                  <p className="text-xs text-gray-500">Happy Clients</p>
                 </div>
               </div>
             </div>
@@ -373,12 +390,13 @@ const About = () => {
               Join thousands of satisfied clients who trust us with their financial journey
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to={'/contact'}>
               <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
                 Schedule Free Consultation
               </button>
-              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all transform hover:scale-105">
-                Download Brochure
-              </button>
+              </Link>
+              
+             
             </div>
             <p className="mt-6 text-sm text-blue-100">
               No obligation. No spam. Just expert financial advice.

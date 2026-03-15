@@ -1,10 +1,10 @@
 import React from 'react';
 import Wraper from '../components/Architure/Wraper';
-import { 
-  FiPhone, 
-  FiMail, 
-  FiMapPin, 
-  FiClock 
+import {
+  FiPhone,
+  FiMail,
+  FiMapPin,
+  FiClock
 } from 'react-icons/fi';
 import { HiOutlineCheck } from 'react-icons/hi';
 
@@ -37,8 +37,8 @@ const Contact = () => {
                 <FiPhone className="h-8 w-8 text-blue-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Call Us</h3>
-              <p className="text-gray-600">+1 (888) 123-4567</p>
-              <p className="text-gray-500 text-sm mt-2">Mon-Fri 9am-6pm EST</p>
+              <p className="text-gray-600">01204981142</p>
+              <p className="text-gray-500 text-sm mt-2">Mon-Sat 9am-7pm </p>
             </div>
 
             {/* Email Card */}
@@ -47,7 +47,7 @@ const Contact = () => {
                 <FiMail className="h-8 w-8 text-blue-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Email Us</h3>
-              <p className="text-gray-600">support@financepro.com</p>
+              <p className="text-gray-600">support@vdsfinancesolution.com</p>
               <p className="text-gray-500 text-sm mt-2">24/7 Support</p>
             </div>
 
@@ -57,8 +57,8 @@ const Contact = () => {
                 <FiMapPin className="h-8 w-8 text-blue-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Visit Us</h3>
-              <p className="text-gray-600">123 Finance Avenue</p>
-              <p className="text-gray-500">New York, NY 10001</p>
+              <p className="text-gray-600">D Block, D-36, Sector-2</p>
+              <p className="text-gray-500">Noida, 201301</p>
             </div>
 
             {/* Hours Card */}
@@ -68,7 +68,7 @@ const Contact = () => {
               </div>
               <h3 className="text-lg font-semibold mb-2">Business Hours</h3>
               <p className="text-gray-600">Mon-Fri: 9am - 6pm</p>
-              <p className="text-gray-500">Sat-Sun: Closed</p>
+              <p className="text-gray-500">Sun: Closed</p>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@ const Contact = () => {
               <p className="text-gray-600 mb-8">
                 Whether you're interested in investment advice, retirement planning, or just have a question, we're here to help.
               </p>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -130,7 +130,7 @@ const Contact = () => {
                   <input
                     type="tel"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="+91 (555) 000-0000"
                   />
                 </div>
 
@@ -179,23 +179,23 @@ const Contact = () => {
               <div className="bg-gray-100 rounded-lg h-96 mb-8 overflow-hidden">
                 {/* Replace with actual Google Maps embed or image */}
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.914770577!2d-74.119763!3d40.697403!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1644262073400!5m2!1sen!2sus"
+                  src="https://www.google.com/maps?q=VDS%20Finance%20Solutions%20D-36%20Sector%202%20Noida&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
-                  title="Office Location"
+                  title="VDS Finance Solutions Office Location"
                 ></iframe>
               </div>
 
               {/* Additional Contact Info */}
               <div className="bg-blue-50 rounded-lg p-8">
-                <h3 className="text-xl font-bold mb-4">Why Choose FinancePro?</h3>
+                <h3 className="text-xl font-bold mb-4">Why Choose VDS Finance?</h3>
                 <ul className="space-y-4">
                   <li className="flex items-start">
                     <HiOutlineCheck className="h-6 w-6 text-blue-600 mr-3" />
-                    <span className="text-gray-700">Certified financial advisors with 20+ years experience</span>
+                    <span className="text-gray-700">Certified financial advisors with 5+ years experience</span>
                   </li>
                   <li className="flex items-start">
                     <HiOutlineCheck className="h-6 w-6 text-blue-600 mr-3" />
@@ -210,7 +210,7 @@ const Contact = () => {
                     <span className="text-gray-700">Free initial consultation for new clients</span>
                   </li>
                 </ul>
-                
+
                 <div className="mt-6 pt-6 border-t border-blue-200">
                   <p className="text-sm text-gray-600">
                     <strong>Emergency Support:</strong> For urgent financial matters, please call our 24/7 hotline at +1 (888) 999-0123

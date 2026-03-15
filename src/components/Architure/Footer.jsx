@@ -90,10 +90,10 @@ const Footer = () => {
   
   // Contact info
   const contactInfo = [
-    { icon: <FaPhone />, text: '+1 (800) 123-4567', subtext: '24/7 Customer Support' },
-    { icon: <FaEnvelope />, text: 'support@fintechhub.com', subtext: 'We reply within 24hrs' },
-    { icon: <FaMapMarkerAlt />, text: '123 Finance Street, NY 10001', subtext: 'New York, USA' },
-    { icon: <FaClock />, text: 'Mon - Fri: 9:00 AM - 6:00 PM', subtext: 'Saturday: 10:00 AM - 4:00 PM' }
+    { icon: <FaPhone />, text: '01204981142', subtext: '24/7 Customer Support' },
+    { icon: <FaEnvelope />, text: 'support@vdsfinancesolution.com', subtext: 'We reply within 24hrs' },
+    { icon: <FaMapMarkerAlt />, text: 'D Block, D-36, Noida, Sector-2, UP(GB.N), 201301', subtext: 'Noida, INDIA' },
+    { icon: <FaClock />, text: 'Mon - Fri: 9:00 AM - 7:00 PM', subtext: 'Saturday: 10:00 AM - 4:00 PM' }
   ];
 
   return (
@@ -114,7 +114,7 @@ const Footer = () => {
               Revolutionizing personal finance with smart technology and expert guidance. Join millions of satisfied customers on their financial journey.
             </p>
 
-            {/* Trust Badges */}
+            {/* Trust Badges
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full">
                 <MdVerified className="text-blue-600" />
@@ -128,7 +128,7 @@ const Footer = () => {
                 <FaLock className="text-blue-600" />
                 <span className="text-sm text-gray-700">256-bit Security</span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Newsletter Section */}

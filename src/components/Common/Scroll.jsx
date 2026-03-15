@@ -1,97 +1,55 @@
 import React, { useState, useEffect } from 'react';
 
 const partners = [
-    {
-        id: 1,
-        name: 'Ecom Express',
-        logo: '/Ecom-express.webp',
-        caption: 'Trusted logistics partner offering end-to-end ecommerce shipping solutions across India.',
-        description: "Leading e-commerce logistics provider"
-    },
-    {
-        id: 2,
-        name: 'XpressBees',
-        logo: '/xpressbees.webp',
-        caption: 'Fast-growing logistics company delivering speed, reliability, and nationwide reach.',
-        description: "Comprehensive logistics solutions"
-    },
-    {
-        id: 3,
-        name: 'Shadowfax',
-        logo: '/shadowfax.webp',
-        caption: 'On-demand hyperlocal delivery network powering quick commerce and last-mile efficiency.',
-        description: "Hyperlocal delivery network",
-    },
-    {
-        id: 4,
-        name: 'Shree Maruti',
-        logo: '/shreemaruti.webp',
-        caption: 'Leading courier and cargo services provider with strong regional and national presence.',
-        description: "Reliable courier services"
-    },
-    {
-        id: 5,
-        name: 'India Post',
-        logo: '/india-post.png',
-        caption: 'India’s most trusted postal network enabling wide-scale delivery to every corner of the country.',
-        description: "Nationwide postal service"
-    },
-    {
-        id: 6,
-        name: 'Delhivery',
-        logo: '/delhivery.webp',
-        caption: 'Technology-driven logistics leader specializing in express parcel, freight, and supply chain solutions.',
-        description: "Technology-enabled logistics"
-    },
-    {
-        id: 7,
-        name: 'DTDC',
-        logo: '/DTDC.png',
-        caption: 'Global courier and logistics brand providing reliable domestic and international delivery services.',
-        description: "Premier express logistics"
-    },
-    {
-        id: 8,
-        name: 'Ekart',
-        logo: 'https://img-cdn.publive.online/fit-in/1200x675/afaqs/media/post_attachments/c9d7799868e9d5111913aa57ea7ba80c16bdb82d2d81d497b656f0173dcef7cd.jpg',
-        caption: 'Flipkart’s in-house logistics arm enabling reliable nationwide delivery for e-commerce.',
-        description: "E-commerce logistics partner"
-    },
-    {
-        id: 9,
-        name: 'Bluedart',
-        logo: 'https://content.jdmagicbox.com/v2/comp/mumbai/w1/022pxx22.xx22.231020181734.e6w1/catalogue/blue-dart-express-andheri-west-mumbai-courier-services-blue-dart-89czp9kzyi-250.jpg',
-        caption: 'Leading express air and integrated transportation company with global DHL network support.',
-        description: "Express logistics and courier"
-    },
-    {
-        id: 10,
-        name: 'Amazon Shipping',
-        logo: 'https://cdn-icons-png.flaticon.com/128/10096/10096351.png',
-        caption: 'Amazon’s trusted delivery network offering speed and reliability for businesses of all sizes.',
-        description: "Global e-commerce logistics"
-    },
-    {
-        id: 11,
-        name: 'DHL',
-        logo: 'https://www.dhl.com/content/dam/dhl/global/core/images/teaser-image-main/dhl-logo.jpg',
-        caption: 'International logistics leader specializing in global courier, parcel, and express mail services.',
-        description: "Global logistics network"
-    },
-    {
-        id: 12,
-        name: 'Aramex',
-        logo: 'https://cdn.prod.website-files.com/64700b7f349828a5b8dc81ab/663b9b52b6be7a96ea79c78e_img-carriers-round-aramex.svg',
-        caption: 'Global provider of comprehensive logistics and transportation solutions with strong Middle East presence.',
-        description: "International courier services"
-    },
-    {
-        id: 13,
-        name: 'GATI',
-        logo: 'https://thecsrjournal.in/wp-content/uploads/2014/07/3-ISL-Gati-completes-maiden-coastal-voyage-from-Kandla.jpg',
-        caption: 'One of India’s pioneers in express distribution and supply chain solutions.',
-        description: "Express distribution specialist"
-    }
+  {
+    id: 1,
+    name: "Bajaj Finserv",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Bajaj_Finserv_Logo.svg/1280px-Bajaj_Finserv_Logo.svg.png",
+    caption: "India’s leading NBFC providing personal loans, business loans, and EMI financing solutions.",
+    description: "Personal and business loan provider"
+  },
+  {
+    id: 2,
+    name: "HDFC Bank",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/2/28/HDFC_Bank_Logo.svg",
+    caption: "One of India's largest private sector banks offering a wide range of financial services.",
+    description: "Banking and loan services"
+  },
+  {
+    id: 3,
+    name: "ICICI Bank",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/1/12/ICICI_Bank_Logo.svg",
+    caption: "Major Indian bank providing retail loans, credit cards, and financial services.",
+    description: "Retail banking and finance"
+  },
+  {
+    id: 4,
+    name: "Axis Bank",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Axis_Bank_logo.svg",
+    caption: "Private sector bank offering personal, home, and business loans.",
+    description: "Private banking services"
+  },
+  {
+    id: 5,
+    name: "Kotak Mahindra Bank",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Kotak_Mahindra_Group_logo.svg/1280px-Kotak_Mahindra_Group_logo.svg.png",
+    caption: "Financial services company offering loans, investment, and banking solutions.",
+    description: "Banking and financial services"
+  },
+  {
+    id: 6,
+    name: "Tata Capital",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Tata_Capital_Logo-01.jpg/1280px-Tata_Capital_Logo-01.jpg",
+    caption: "Trusted NBFC providing personal loans, business loans, and wealth management services.",
+    description: "NBFC and financial services"
+  },
+  {
+    id: 7,
+    name: "Aditya Birla Finance",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfxlnMZfOmkwnYTYiM4OE55zLfo54MLwvJGQ&s",
+    caption: "Provides a wide range of lending solutions including personal and SME loans.",
+    description: "Corporate and retail lending"
+  }
 ];
 
 export default function Scroll() {

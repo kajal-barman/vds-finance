@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from '../../Asset/vds_logo.png'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-full">
           {/* Logo/Brand */}
           <Link to="/" className="text-black text-3xl font-bold flex items-center">
-            VDS<span className="text-blue-800 ml-1">Finance</span>
+            <img src={Logo} className= " h-16"alt="" />{/* VDS<span className="text-blue-800 ml-1">Finance</span> */}
           </Link>
 
           {/* Desktop Navigation - Right Side */}

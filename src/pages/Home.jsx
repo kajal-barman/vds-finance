@@ -59,6 +59,7 @@ import { GiTakeMyMoney, GiPayMoney, GiReceiveMoney, GiInvestment, GiGrowth } fro
 import { AiFillSafetyCertificate, AiOutlineStock } from 'react-icons/ai';
 import Wraper from '../components/Architure/Wraper';
 import Scroll from '../components/Common/Scroll'
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -144,37 +145,37 @@ const HomePage = () => {
 
   // Stats data
   const stats = [
-    { value: '25+', label: 'Years Experience', icon: FaAward },
-    { value: '50K+', label: 'Happy Clients', icon: FaUsers },
+    { value: '5', label: 'Years Experience', icon: FaAward },
+    { value: '100K+', label: 'Happy Clients', icon: FaUsers },
     { value: '100+', label: 'Expert Advisors', icon: FaUserTie },
-    { value: '$2B+', label: 'Assets Managed', icon: MdOutlineInventory2 }
+    { value: '₹200cr', label: 'Loan Disbursed', icon: MdOutlineInventory2 }
   ];
 
   // Testimonials data
   const testimonials = [
     {
-      name: 'Sarah Johnson',
+      name: 'Ajay Verma',
       role: 'Small Business Owner',
       content: 'The team at FinancePro transformed my financial future. Their investment strategies helped me grow my retirement fund by 40% in just two years.',
       rating: 5,
       image: 'SJ',
-      location: 'New York, NY'
+      location: 'Pune'
     },
     {
-      name: 'Michael Chen',
+      name: 'Abhishek Sharma',
       role: 'Tech Executive',
       content: 'Outstanding service! They helped me navigate complex tax situations and saved me thousands. Highly professional and knowledgeable.',
       rating: 5,
       image: 'MC',
-      location: 'San Francisco, CA'
+      location: 'Delhi'
     },
     {
-      name: 'Emily Williams',
+      name: 'Ramesh Tiwari',
       role: 'Retired Teacher',
       content: 'Thanks to their retirement planning, I can enjoy my golden years without financial stress. They truly care about their clients.',
       rating: 5,
       image: 'EW',
-      location: 'Chicago, IL'
+      location: 'Noida'
     }
   ];
 
@@ -238,25 +239,30 @@ const HomePage = () => {
                 </p>
 
                 <div className="flex flex-wrap gap-4 mb-8">
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center space-x-2">
-                    <span>Start Free Consultation</span>
-                    <FaArrowRight className="h-4 w-4" />
-                  </button>
-                  <button className="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-semibold transition-all flex items-center space-x-2">
-                    <FaPhone className="h-4 w-4" />
-                    <span>Call Us Today</span>
-                  </button>
+                  <Link to={'/contact'}>
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center space-x-2">
+                      <span>Start Free Consultation</span>
+                      <FaArrowRight className="h-4 w-4" />
+                    </button>
+                  </Link>
+                  <Link to={'/contact'}>
+                    <button className="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-semibold transition-all flex items-center space-x-2">
+                      <FaPhone className="h-4 w-4" />
+                      <span>Call Us Today</span>
+                    </button>
+                  </Link>
+
                 </div>
 
                 {/* Trust Badges */}
-                <div className="flex flex-wrap gap-6">
+                {/* <div className="flex flex-wrap gap-6">
                   {partners.map((partner, index) => (
                     <div key={index} className="flex items-center space-x-2">
                       <partner.icon className="h-5 w-5 text-blue-500" />
                       <span className="text-gray-500 text-sm">{partner.name}</span>
                     </div>
                   ))}
-                </div>
+                </div> */}
               </div>
 
               {/* Right Content - Stats Cards */}
@@ -275,11 +281,11 @@ const HomePage = () => {
             </div>
 
             {/* Scroll Indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
               <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
                 <div className="w-1 h-3 bg-blue-500 rounded-full mt-2 animate-pulse"></div>
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
 
@@ -333,7 +339,7 @@ const HomePage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Side - Features */}
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">Why Choose FinancePro?</h2>
+                <h2 className="text-4xl font-bold text-gray-900 mb-6">Why Choose VDS Finance?</h2>
                 <p className="text-xl text-gray-600 mb-8">
                   We combine expertise, technology, and personalized service to deliver exceptional financial results.
                 </p>
@@ -419,8 +425,8 @@ const HomePage = () => {
 
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <div className="text-center p-4 bg-blue-50 rounded-xl">
-                    <p className="text-3xl font-bold text-blue-600 mb-1">$2B+</p>
-                    <p className="text-gray-600 text-sm">Assets Managed</p>
+                    <p className="text-3xl font-bold text-blue-600 mb-1">₹200cr</p>
+                    <p className="text-gray-600 text-sm">Loan Disbursed</p>
                   </div>
                   <div className="text-center p-4 bg-blue-50 rounded-xl">
                     <p className="text-3xl font-bold text-blue-600 mb-1">100+</p>
@@ -526,9 +532,11 @@ const HomePage = () => {
             </div>
 
             <div className="text-center mt-12">
-              <button className="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-xl font-semibold transition-all">
-                View All Articles
-              </button>
+              <Link to={'/contact'}>
+                <button className="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-xl font-semibold transition-all">
+                  View All Articles
+                </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -547,12 +555,16 @@ const HomePage = () => {
                   Schedule a free consultation with one of our expert advisors today and get a personalized financial plan.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all transform hover:scale-105">
-                    Book Free Consultation
-                  </button>
-                  <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all">
-                    Learn More
-                  </button>
+                  <Link to={'/contact'}>
+                    <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all transform hover:scale-105">
+                      Book Free Consultation
+                    </button>
+                  </Link>
+                  <Link to={'/contact'}>
+                    <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all">
+                      Learn More
+                    </button>
+                  </Link>
                 </div>
                 <p className="text-white/80 text-sm mt-6">
                   No obligations. No credit card required. 100% free consultation.
@@ -563,6 +575,7 @@ const HomePage = () => {
         </section>
 
         <Scroll />
+        
       </div>
     </Wraper>
   );
