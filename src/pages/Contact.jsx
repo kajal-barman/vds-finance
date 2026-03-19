@@ -67,12 +67,12 @@ const Contact = () => {
                 <FiClock className="h-8 w-8 text-blue-600" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Business Hours</h3>
-              <p className="text-gray-600">Mon-Fri: 9am - 6pm</p>
+              <p className="text-gray-600">Mon-Sat: 9am - 6pm</p>
               <p className="text-gray-500">Sun: Closed</p>
             </div>
           </div>
         </div>
-      </section>
+      </section> 
 
       {/* Contact Form and Map Section */}
       <section className="py-16">

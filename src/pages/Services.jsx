@@ -365,14 +365,14 @@ const ServicesPage = () => {
   ];
 
   // Filter services based on selected category
-  const filteredServices = selectedCategory === 'all' 
-    ? services 
+  const filteredServices = selectedCategory === 'all'
+    ? services
     : services.filter(service => service.category === selectedCategory);
 
   const ServiceCard = ({ service }) => {
     const Icon = service.icon;
     return (
-      <div 
+      <div
         className="bg-white rounded-xl shadow-lg p-6 border border-gray-200 hover:border-blue-500 transition-all cursor-pointer group"
         onClick={() => {
           setSelectedService(service);
@@ -382,7 +382,7 @@ const ServicesPage = () => {
         <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${service.color} p-4 mb-4 group-hover:scale-110 transition-transform`}>
           <Icon className="h-8 w-8 text-white" />
         </div>
-        
+
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-xl font-bold text-gray-900">{service.name}</h3>
           <div className="flex items-center space-x-1">
@@ -390,9 +390,9 @@ const ServicesPage = () => {
             <span className="text-gray-700 text-sm">{service.rating}</span>
           </div>
         </div>
-        
+
         <p className="text-gray-600 text-sm mb-4">{service.description}</p>
-        
+
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
             <span className="text-gray-900 font-semibold">{service.price}</span>
@@ -404,11 +404,11 @@ const ServicesPage = () => {
           </div>
           <span className="text-gray-500 text-sm">{service.reviews} reviews</span>
         </div>
-        
+
         <div className="flex items-center justify-between">
           <div className="flex -space-x-2">
             {service.advisors.slice(0, 3).map((advisor, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 border-2 border-white flex items-center justify-center text-white text-xs font-semibold"
               >
@@ -433,7 +433,7 @@ const ServicesPage = () => {
         <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-200">
           {/* Modal Header */}
           <div className={`bg-gradient-to-r ${service.color} p-6 relative`}>
-            <button 
+            <button
               onClick={onClose}
               className="absolute top-4 right-4 text-white/80 hover:text-white"
             >
@@ -464,9 +464,8 @@ const ServicesPage = () => {
             <div className="flex justify-between mb-8">
               {[1, 2, 3].map((step) => (
                 <div key={step} className="flex-1 text-center relative">
-                  <div className={`w-8 h-8 mx-auto rounded-full flex items-center justify-center mb-2 ${
-                    bookingStep >= step ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'
-                  }`}>
+                  <div className={`w-8 h-8 mx-auto rounded-full flex items-center justify-center mb-2 ${bookingStep >= step ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'
+                    }`}>
                     {step}
                   </div>
                   <p className={`text-xs ${bookingStep >= step ? 'text-gray-900 font-medium' : 'text-gray-500'}`}>
@@ -485,8 +484,8 @@ const ServicesPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-gray-700 text-sm mb-2">Date</label>
-                    <input 
-                      type="date" 
+                    <input
+                      type="date"
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                     />
                   </div>
@@ -568,31 +567,31 @@ const ServicesPage = () => {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-gray-700 text-sm mb-2">Your Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                       placeholder="John Doe"
                     />
                   </div>
                   <div>
                     <label className="block text-gray-700 text-sm mb-2">Email</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                       placeholder="john@example.com"
                     />
                   </div>
                   <div>
                     <label className="block text-gray-700 text-sm mb-2">Phone</label>
-                    <input 
-                      type="tel" 
+                    <input
+                      type="tel"
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                       placeholder="(555) 123-4567"
                     />
                   </div>
                   <div>
                     <label className="block text-gray-700 text-sm mb-2">Additional Notes</label>
-                    <textarea 
+                    <textarea
                       className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                       rows="3"
                       placeholder="Any specific questions or requirements?"
@@ -604,19 +603,18 @@ const ServicesPage = () => {
 
             {/* Modal Footer */}
             <div className="flex justify-between mt-8 pt-6 border-t border-gray-200">
-              <button 
+              <button
                 onClick={() => bookingStep > 1 && setBookingStep(bookingStep - 1)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-colors ${
-                  bookingStep > 1 
-                    ? 'bg-gray-200 hover:bg-gray-300 text-gray-900' 
-                    : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                }`}
+                className={`px-6 py-3 rounded-xl font-semibold transition-colors ${bookingStep > 1
+                  ? 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+                  : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                  }`}
                 disabled={bookingStep === 1}
               >
                 Previous
               </button>
               {bookingStep < 3 ? (
-                <button 
+                <button
                   onClick={() => setBookingStep(bookingStep + 1)}
                   className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                 >
@@ -636,188 +634,187 @@ const ServicesPage = () => {
 
   return (
     <Wraper>
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      
+      <div className="min-h-screen bg-gray-50">
+        {/* Header */}
 
-      <div className="container mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">Our Services</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive financial solutions tailored to your needs. From investment advice to retirement planning, we're here to help you achieve your goals.
-          </p>
-        </div>
 
-        {/* Stats Section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
-            <FaUsers className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-            <p className="text-3xl font-bold text-gray-900">50K+</p>
-            <p className="text-gray-600 text-sm">Happy Clients</p>
+        <div className="container mx-auto px-4 py-8">
+          {/* Hero Section */}
+          <div className="text-center mb-12">
+            <h1 className="text-5xl font-bold text-gray-900 mb-4">Our Services</h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Comprehensive financial solutions tailored to your needs. From investment advice to retirement planning, we're here to help you achieve your goals.
+            </p>
           </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
-            <FaAward className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-            <p className="text-3xl font-bold text-gray-900">25+</p>
-            <p className="text-gray-600 text-sm">Years Experience</p>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
-            <FaUserTie className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-            <p className="text-3xl font-bold text-gray-900">100+</p>
-            <p className="text-gray-600 text-sm">Expert Advisors</p>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
-            <FaGem className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-            <p className="text-3xl font-bold text-gray-900">$2B+</p>
-            <p className="text-gray-600 text-sm">Assets Managed</p>
-          </div>
-        </div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap gap-3 mb-8">
-          {categories.map((category) => {
-            const Icon = category.icon;
-            return (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${
-                  selectedCategory === category.id
+          {/* Stats Section */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+            <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
+              <FaUsers className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+              <p className="text-3xl font-bold text-gray-900">50K+</p>
+              <p className="text-gray-600 text-sm">Happy Clients</p>
+            </div>
+            <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
+              <FaAward className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+              <p className="text-3xl font-bold text-gray-900">25+</p>
+              <p className="text-gray-600 text-sm">Years Experience</p>
+            </div>
+            <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
+              <FaUserTie className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+              <p className="text-3xl font-bold text-gray-900">100+</p>
+              <p className="text-gray-600 text-sm">Expert Advisors</p>
+            </div>
+            <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
+              <FaGem className="h-8 w-8 text-blue-600 mx-auto mb-3" />
+              <p className="text-3xl font-bold text-gray-900">$2B+</p>
+              <p className="text-gray-600 text-sm">Assets Managed</p>
+            </div>
+          </div>
+
+          {/* Category Filters */}
+          <div className="flex flex-wrap gap-3 mb-8">
+            {categories.map((category) => {
+              const Icon = category.icon;
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all ${selectedCategory === category.id
                     ? 'bg-blue-600 text-white'
                     : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'
-                }`}
-              >
-                <Icon className="h-4 w-4" />
-                <span>{category.name}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredServices.map(service => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
-        </div>
-
-        {/* Why Choose Us Section */}
-        <section className="mt-16">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Why Choose Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <HiOutlineShieldCheck className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Trusted Advisors</h3>
-              <p className="text-gray-600">Certified professionals with years of industry experience</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <HiOutlineSparkles className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Personalized Solutions</h3>
-              <p className="text-gray-600">Tailored strategies that match your unique goals</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <HiOutlineLightBulb className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Innovative Approach</h3>
-              <p className="text-gray-600">Cutting-edge tools and strategies for optimal results</p>
-            </div>
+                    }`}
+                >
+                  <Icon className="h-4 w-4" />
+                  <span>{category.name}</span>
+                </button>
+              );
+            })}
           </div>
-        </section>
 
-        {/* Testimonials */}
-        <section className="mt-16">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">What Our Clients Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-                <div className="flex items-center space-x-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <FaStar key={i} className="h-4 w-4 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4">
-                  "Excellent service! The team was professional, knowledgeable, and helped me achieve my financial goals. Highly recommended!"
-                </p>
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white font-semibold">
-                    JD
-                  </div>
-                  <div>
-                    <p className="text-gray-900 font-semibold">John Doe</p>
-                    <p className="text-gray-500 text-sm">Home Loan Client</p>
-                  </div>
-                </div>
-              </div>
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredServices.map(service => (
+              <ServiceCard key={service.id} service={service} />
             ))}
           </div>
-        </section>
 
-        {/* CTA Section */}
-        <section className="mt-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-12 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
-          <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-            Schedule a free consultation with one of our expert advisors today and take the first step toward your financial goals.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
-              Schedule Consultation
-            </button>
-            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors">
-              Learn More
-            </button>
-          </div>
-        </section>
+          {/* Why Choose Us Section */}
+          <section className="mt-16">
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">Why Choose Us</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <HiOutlineShieldCheck className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Trusted Advisors</h3>
+                <p className="text-gray-600">Certified professionals with years of industry experience</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <HiOutlineSparkles className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Personalized Solutions</h3>
+                <p className="text-gray-600">Tailored strategies that match your unique goals</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <HiOutlineLightBulb className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Innovative Approach</h3>
+                <p className="text-gray-600">Cutting-edge tools and strategies for optimal results</p>
+              </div>
+            </div>
+          </section>
 
-        {/* Contact Options */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8">
-          <div className="bg-white rounded-xl shadow-lg p-4 flex items-center space-x-3 border border-gray-200">
-            <FaPhone className="h-5 w-5 text-blue-600" />
-            <div>
-              <p className="text-gray-600 text-sm">Call Us</p>
-              <p className="text-gray-900 font-semibold">+1 (888) 123-4567</p>
+          {/* Testimonials */}
+          <section className="mt-16">
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">What Our Clients Say</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((item) => (
+                <div key={item} className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
+                  <div className="flex items-center space-x-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} className="h-4 w-4 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 mb-4">
+                    "Excellent service! The team was professional, knowledgeable, and helped me achieve my financial goals. Highly recommended!"
+                  </p>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white font-semibold">
+                      JD
+                    </div>
+                    <div>
+                      <p className="text-gray-900 font-semibold">John Doe</p>
+                      <p className="text-gray-500 text-sm">Home Loan Client</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-4 flex items-center space-x-3 border border-gray-200">
-            <FaEnvelope className="h-5 w-5 text-blue-600" />
-            <div>
-              <p className="text-gray-600 text-sm">Email</p>
-              <p className="text-gray-900 font-semibold">services@financehub.com</p>
+          </section>
+
+          {/* CTA Section */}
+          <section className="mt-16 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-12 text-center">
+            <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
+            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              Schedule a free consultation with one of our expert advisors today and take the first step toward your financial goals.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                Schedule Consultation
+              </button>
+              <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors">
+                Learn More
+              </button>
             </div>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-4 flex items-center space-x-3 border border-gray-200">
-            <FaVideo className="h-5 w-5 text-blue-600" />
-            <div>
-              <p className="text-gray-600 text-sm">Video Consultation</p>
-              <p className="text-gray-900 font-semibold">Book Online</p>
+          </section>
+
+          {/* Contact Options */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8">
+            <div className="bg-white rounded-xl shadow-lg p-4 flex items-center space-x-3 border border-gray-200">
+              <FaPhone className="h-5 w-5 text-blue-600" />
+              <div>
+                <p className="text-gray-600 text-sm">Call Us</p>
+                <p className="text-gray-900 font-semibold">01204981142</p>
+              </div>
             </div>
-          </div>
-          <div className="bg-white rounded-xl shadow-lg p-4 flex items-center space-x-3 border border-gray-200">
-            <FaRegBuilding className="h-5 w-5 text-blue-600" />
-            <div>
-              <p className="text-gray-600 text-sm">Visit Office</p>
-              <p className="text-gray-900 font-semibold">123 Finance Ave</p>
+            <div className="bg-white rounded-xl shadow-lg p-4 flex items-center space-x-3 border border-gray-200">
+              <FaEnvelope className="h-5 w-5 text-blue-600" />
+              <div>
+                <p className="text-gray-600 text-sm">Email</p>
+                <p className="text-gray-900 font-semibold">support@vdsfinancesolution.com</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-lg p-4 flex items-center space-x-3 border border-gray-200">
+              <FaVideo className="h-5 w-5 text-blue-600" />
+              <div>
+                <p className="text-gray-600 text-sm">Video Consultation</p>
+                <p className="text-gray-900 font-semibold">Book Online</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-lg p-4 flex items-center space-x-3 border border-gray-200">
+              <FaRegBuilding className="h-5 w-5 text-blue-600" />
+              <div>
+                <p className="text-gray-600 text-sm">Visit Office</p>
+                <p className="text-gray-900 font-semibold">123 Finance Ave</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Booking Modal */}
-      {showBookingModal && (
-        <BookingModal 
-          service={selectedService} 
-          onClose={() => {
-            setShowBookingModal(false);
-            setSelectedService(null);
-            setBookingStep(1);
-          }} 
-        />
-      )}
-    </div>
+        {/* Booking Modal */}
+        {showBookingModal && (
+          <BookingModal
+            service={selectedService}
+            onClose={() => {
+              setShowBookingModal(false);
+              setSelectedService(null);
+              setBookingStep(1);
+            }}
+          />
+        )}
+      </div>
     </Wraper>
   );
 };

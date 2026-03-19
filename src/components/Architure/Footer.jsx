@@ -83,17 +83,17 @@ const Footer = () => {
     { icon: <FaFacebookF />, url: 'https://facebook.com', color: 'hover:bg-blue-600', label: 'Facebook', bgColor: 'bg-blue-100', textColor: 'text-blue-600' },
     { icon: <FaTwitter />, url: 'https://twitter.com', color: 'hover:bg-blue-400', label: 'Twitter', bgColor: 'bg-blue-100', textColor: 'text-blue-400' },
     { icon: <FaInstagram />, url: 'https://instagram.com', color: 'hover:bg-pink-600', label: 'Instagram', bgColor: 'bg-pink-100', textColor: 'text-pink-600' },
-    { icon: <FaWhatsapp />, url: 'https://whatsapp.com', color: 'hover:bg-green-500', label: 'WhatsApp', bgColor: 'bg-green-100', textColor: 'text-green-500' }
+    { icon: <FaWhatsapp />, url: 'https://wa.me/919756081630?text=Hello%2C%20I%20want%20to%20talk', color: 'hover:bg-green-500', label: 'WhatsApp', bgColor: 'bg-green-100', textColor: 'text-green-500' }
   ];
 
-  
-  
+
+
   // Contact info
   const contactInfo = [
     { icon: <FaPhone />, text: '01204981142', subtext: '24/7 Customer Support' },
     { icon: <FaEnvelope />, text: 'support@vdsfinancesolution.com', subtext: 'We reply within 24hrs' },
     { icon: <FaMapMarkerAlt />, text: 'D Block, D-36, Noida, Sector-2, UP(GB.N), 201301', subtext: 'Noida, INDIA' },
-    { icon: <FaClock />, text: 'Mon - Fri: 9:00 AM - 7:00 PM', subtext: 'Saturday: 10:00 AM - 4:00 PM' }
+    { icon: <FaClock />, text: 'Mon - Sat: 9:00 AM - 7:00 PM', subtext: 'Saturday: 10:00 AM - 4:00 PM' }
   ];
 
   return (
@@ -105,7 +105,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className=" flex-text-center space-x-2">
-              
+
               <span className="text-3xl font-bold text-gray-800">
                 VDS<span className="text-blue-600">Finance</span>
               </span>
@@ -132,7 +132,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter Section */}
-          
+
         </div>
 
         {/* Links Section */}
@@ -237,7 +237,7 @@ const Footer = () => {
           </div>
         </div>
 
-        
+
 
         {/* Social Media & Payment Methods */}
         <div className="py-8 border-t border-gray-200">
@@ -258,7 +258,7 @@ const Footer = () => {
               ))}
             </div>
 
-           
+
           </div>
         </div>
 
