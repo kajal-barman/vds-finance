@@ -53,7 +53,7 @@ const Footer = () => {
 
   // Company links
   const companyLinks = [
-    { name: 'About Us', path: '/about', icon: <RiGovernmentLine className="mr-2" /> },
+    { name: 'About Us', path: '/about-us', icon: <RiGovernmentLine className="mr-2" /> },
     { name: 'Careers', path: '/careers', icon: <GiTakeMyMoney className="mr-2" /> },
     { name: 'Press', path: '/press', icon: <IoMdGlobe className="mr-2" /> },
     { name: 'Blog', path: '/blog', icon: <FaLaptop className="mr-2" /> },
@@ -73,7 +73,7 @@ const Footer = () => {
   const resourceLinks = [
     { name: 'Help Center', path: '/help', icon: <MdSupportAgent className="mr-2" /> },
     { name: 'FAQs', path: '/faqs', icon: <RiCustomerService2Line className="mr-2" /> },
-    { name: 'Privacy Policy', path: '/privacy', icon: <MdSecurity className="mr-2" /> },
+    { name: 'Privacy Policy', path: '/privacy-policy', icon: <MdSecurity className="mr-2" /> },
     { name: 'Terms of Use', path: '/terms', icon: <FaLock className="mr-2" /> },
     { name: 'Security', path: '/security', icon: <BsShieldCheck className="mr-2" /> }
   ];
@@ -82,7 +82,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: <FaFacebookF />, url: 'https://facebook.com', color: 'hover:bg-blue-600', label: 'Facebook', bgColor: 'bg-blue-100', textColor: 'text-blue-600' },
     { icon: <FaTwitter />, url: 'https://twitter.com', color: 'hover:bg-blue-400', label: 'Twitter', bgColor: 'bg-blue-100', textColor: 'text-blue-400' },
-    { icon: <FaInstagram />, url: 'https://instagram.com', color: 'hover:bg-pink-600', label: 'Instagram', bgColor: 'bg-pink-100', textColor: 'text-pink-600' },
+    { icon: <FaInstagram />, url: 'https://www.instagram.com/solutionvdsfinance?igsh=MWsyMzhqcGh1Z2EwbQ==', color: 'hover:bg-pink-600', label: 'Instagram', bgColor: 'bg-pink-100', textColor: 'text-pink-600' },
     { icon: <FaWhatsapp />, url: 'https://wa.me/919756081630?text=Hello%2C%20I%20want%20to%20talk', color: 'hover:bg-green-500', label: 'WhatsApp', bgColor: 'bg-green-100', textColor: 'text-green-500' }
   ];
 
@@ -268,7 +268,7 @@ const Footer = () => {
             {/* Copyright */}
             <p className="text-gray-600 text-sm text-center lg:text-left">
               © {currentYear} VDS Finance . All rights reserved. |
-              <Link to="/privacy" className="text-blue-600 hover:text-blue-700 ml-1">Privacy</Link> |
+              <Link to="/privacy-policy" className="text-blue-600 hover:text-blue-700 ml-1">Privacy</Link> |
               <Link to="/terms" className="text-blue-600 hover:text-blue-700 ml-1">Terms</Link> |
               <Link to="/sitemap" className="text-blue-600 hover:text-blue-700 ml-1">Sitemap</Link>
             </p>

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Wraper from '../components/Architure/Wraper';
-import { 
-  FaSearch, 
-  FaHome, 
-  FaCar, 
-  FaGraduationCap, 
-  FaBriefcase, 
-  FaHeart, 
-  FaGem, 
-  FaHospital, 
+import {
+  FaSearch,
+  FaHome,
+  FaCar,
+  FaGraduationCap,
+  FaBriefcase,
+  FaHeart,
+  FaGem,
+  FaHospital,
   FaUniversity,
   FaRupeeSign,
   FaChartLine,
@@ -41,8 +41,8 @@ import {
   FaTag,
   FaExternalLinkAlt
 } from 'react-icons/fa';
-import { 
-  MdCompareArrows, 
+import {
+  MdCompareArrows,
   MdSecurity,
   MdTimeline,
   MdVerified,
@@ -59,8 +59,8 @@ import {
   MdEmail,
   MdChat
 } from 'react-icons/md';
-import { 
-  HiOutlineSparkles, 
+import {
+  HiOutlineSparkles,
   HiOutlineLightningBolt,
   HiOutlineShieldCheck,
   HiOutlineCurrencyRupee,
@@ -70,9 +70,9 @@ import {
   HiOutlineCheckCircle,
   HiOutlineInformationCircle
 } from 'react-icons/hi';
-import { 
-  GiMoneyStack, 
-  GiReceiveMoney, 
+import {
+  GiMoneyStack,
+  GiReceiveMoney,
   GiTakeMyMoney,
   GiBank,
   GiPiggyBank,
@@ -88,7 +88,7 @@ import {
 
 const Loan = () => {
   const navigate = useNavigate();
-  
+
   const [selectedLoanType, setSelectedLoanType] = useState('all');
   const [selectedAmount, setSelectedAmount] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -107,7 +107,7 @@ const Loan = () => {
   };
 
   const handleApplyNow = (loanId, loanName) => {
-    handleNavigate('/contact', { 
+    handleNavigate('/contact', {
       source: 'loan_application',
       loanId: loanId,
       loanName: loanName,
@@ -116,7 +116,7 @@ const Loan = () => {
   };
 
   const handleDetails = (loanId, loanName) => {
-    handleNavigate('/contact', { 
+    handleNavigate('/contact', {
       source: 'loan_details',
       loanId: loanId,
       loanName: loanName,
@@ -125,28 +125,28 @@ const Loan = () => {
   };
 
   const handleTalkToExpert = () => {
-    handleNavigate('/contact', { 
+    handleNavigate('/contact', {
       source: 'talk_to_expert',
       type: 'expert_consultation'
     });
   };
 
   const handleWhatsApp = () => {
-    handleNavigate('/contact', { 
+    handleNavigate('/contact', {
       source: 'whatsapp',
       type: 'whatsapp_inquiry'
     });
   };
 
   const handleEmail = () => {
-    handleNavigate('/contact', { 
+    handleNavigate('/contact', {
       source: 'email',
       type: 'email_inquiry'
     });
   };
 
   const handleSignIn = () => {
-    handleNavigate('/contact', { 
+    handleNavigate('/contact', {
       source: 'sign_in',
       type: 'account_access'
     });
@@ -484,13 +484,13 @@ const Loan = () => {
     const principal = loanAmount;
     const ratePerMonth = interestRate / (12 * 100);
     const months = tenure * 12;
-    
+
     if (ratePerMonth === 0) {
       return Math.round(principal / months);
     }
-    
-    const emi = (principal * ratePerMonth * Math.pow(1 + ratePerMonth, months)) / 
-                (Math.pow(1 + ratePerMonth, months) - 1);
+
+    const emi = (principal * ratePerMonth * Math.pow(1 + ratePerMonth, months)) /
+      (Math.pow(1 + ratePerMonth, months) - 1);
     return Math.round(emi);
   };
 
@@ -502,12 +502,12 @@ const Loan = () => {
   const filteredLoans = loanProducts.filter(loan => {
     const typeMatch = selectedLoanType === 'all' || loan.type === selectedLoanType;
     const searchMatch = loan.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                       loan.bank.toLowerCase().includes(searchQuery.toLowerCase());
-    
+      loan.bank.toLowerCase().includes(searchQuery.toLowerCase());
+
     let amountMatch = true;
     if (selectedAmount !== 'all') {
       const maxAmount = parseInt(loan.maxAmount.replace(/[^0-9]/g, ''));
-      switch(selectedAmount) {
+      switch (selectedAmount) {
         case 'upto-1l':
           amountMatch = maxAmount <= 1;
           break;
@@ -530,7 +530,7 @@ const Loan = () => {
           amountMatch = true;
       }
     }
-    
+
     return typeMatch && searchMatch && amountMatch;
   }).sort((a, b) => {
     let comparison = 0;
@@ -575,15 +575,15 @@ const Loan = () => {
 
   return (
     <Wraper>
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-       
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20">
+
 
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 text-white overflow-hidden">
           <div className="absolute inset-0 bg-black opacity-10"></div>
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-white opacity-10 rounded-full"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white opacity-10 rounded-full"></div>
-          
+
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -594,10 +594,10 @@ const Loan = () => {
                 for Your Needs
               </h1>
               <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-                Compare loans from 20+ banks. Lowest interest rates, minimal documentation, 
+                Compare loans from 20+ banks. Lowest interest rates, minimal documentation,
                 and quick approval tailored to your requirements.
               </p>
-              
+
               {/* Search Bar */}
               <div className="max-w-2xl mx-auto mb-12">
                 <div className="relative">
@@ -654,21 +654,22 @@ const Loan = () => {
                   yellow: 'bg-yellow-50 text-yellow-600 hover:bg-yellow-600 hover:text-white',
                   teal: 'bg-teal-50 text-teal-600 hover:bg-teal-600 hover:text-white',
                 };
-                
+
                 return (
-                  <button
-                    key={type.id}
-                    onClick={() => handleCategoryClick(type.id, type.name)}
-                    className={`p-4 rounded-xl transition-all ${
-                      isActive 
-                        ? `bg-${type.color}-600 text-white shadow-lg scale-105` 
+                  <Link to={'/contact'}>
+                    <button
+                      key={type.id}
+                      onClick={() => handleCategoryClick(type.id, type.name)}
+                      className={`p-4 rounded-xl transition-all ${isActive
+                        ? `bg-${type.color}-600 text-white shadow-lg scale-105`
                         : colorClasses[type.color] || 'bg-gray-50 text-gray-600 hover:bg-gray-200'
-                    }`}
-                  >
-                    <div className="text-2xl mb-1 flex justify-center">{type.icon}</div>
-                    <div className="text-xs font-medium">{type.name}</div>
-                    <div className="text-xs opacity-75 mt-1">{type.count} loans</div>
-                  </button>
+                        }`}
+                    >
+                      <div className="text-2xl mb-1 flex justify-center">{type.icon}</div>
+                      <div className="text-xs font-medium">{type.name}</div>
+                      <div className="text-xs opacity-75 mt-1">{type.count} loans</div>
+                    </button>
+                  </Link>
                 );
               })}
             </div>
@@ -682,17 +683,19 @@ const Loan = () => {
                 Find Your Perfect Loan
               </h2>
               {(selectedLoanType !== 'all' || selectedAmount !== 'all' || searchQuery) && (
-                <button 
-                  onClick={() => {
-                    setSelectedLoanType('all');
-                    setSelectedAmount('all');
-                    setSearchQuery('');
-                  }}
-                  className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
-                >
-                  <FaTimes className="text-sm" />
-                  Clear All
-                </button>
+                <Link to={'/contact'}>
+                  <button
+                    onClick={() => {
+                      setSelectedLoanType('all');
+                      setSelectedAmount('all');
+                      setSearchQuery('');
+                    }}
+                    className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
+                  >
+                    <FaTimes className="text-sm" />
+                    Clear All
+                  </button>
+                </Link>
               )}
             </div>
 
@@ -703,7 +706,7 @@ const Loan = () => {
                   <FaUniversity className="text-blue-600" />
                   Loan Category
                 </label>
-                <select 
+                <select
                   value={selectedLoanType}
                   onChange={(e) => setSelectedLoanType(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -720,7 +723,7 @@ const Loan = () => {
                   <FaRupeeSign className="text-green-600" />
                   Loan Amount
                 </label>
-                <select 
+                <select
                   value={selectedAmount}
                   onChange={(e) => setSelectedAmount(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -737,16 +740,17 @@ const Loan = () => {
                   <MdCalculate className="text-purple-600" />
                   EMI Calculator
                 </label>
-                <button 
-                  onClick={() => setShowCalculator(!showCalculator)}
-                  className={`w-full px-4 py-2 rounded-lg font-medium transition-all ${
-                    showCalculator 
-                      ? 'bg-purple-600 text-white hover:bg-purple-700' 
+                <Link to={'/contact'}>
+                  <button
+                    onClick={() => setShowCalculator(!showCalculator)}
+                    className={`w-full px-4 py-2 rounded-lg font-medium transition-all ${showCalculator
+                      ? 'bg-purple-600 text-white hover:bg-purple-700'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {showCalculator ? 'Hide Calculator' : 'Calculate EMI'}
-                </button>
+                      }`}
+                  >
+                    {showCalculator ? 'Hide Calculator' : 'Calculate EMI'}
+                  </button>
+                </Link>
               </div>
             </div>
 
@@ -760,55 +764,55 @@ const Loan = () => {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   <div>
                     <label className="block text-sm text-gray-600 mb-1">Loan Amount (₹)</label>
-                    <input 
-                      type="range" 
-                      min="10000" 
-                      max="10000000" 
-                      step="10000" 
+                    <input
+                      type="range"
+                      min="10000"
+                      max="10000000"
+                      step="10000"
                       value={loanAmount}
                       onChange={(e) => setLoanAmount(Number(e.target.value))}
                       className="w-full"
                     />
-                    <input 
-                      type="number" 
-                      value={loanAmount} 
+                    <input
+                      type="number"
+                      value={loanAmount}
                       onChange={(e) => setLoanAmount(Number(e.target.value))}
                       className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg"
                     />
                   </div>
                   <div>
                     <label className="block text-sm text-gray-600 mb-1">Interest Rate (%)</label>
-                    <input 
-                      type="range" 
-                      min="5" 
-                      max="20" 
-                      step="0.1" 
+                    <input
+                      type="range"
+                      min="5"
+                      max="20"
+                      step="0.1"
                       value={interestRate}
                       onChange={(e) => setInterestRate(Number(e.target.value))}
                       className="w-full"
                     />
-                    <input 
-                      type="number" 
-                      step="0.1" 
-                      value={interestRate} 
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={interestRate}
                       onChange={(e) => setInterestRate(Number(e.target.value))}
                       className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg"
                     />
                   </div>
                   <div>
                     <label className="block text-sm text-gray-600 mb-1">Tenure (Years)</label>
-                    <input 
-                      type="range" 
-                      min="1" 
-                      max="30" 
-                      step="1" 
+                    <input
+                      type="range"
+                      min="1"
+                      max="30"
+                      step="1"
                       value={tenure}
                       onChange={(e) => setTenure(Number(e.target.value))}
                       className="w-full"
                     />
-                    <input 
-                      type="number" 
-                      value={tenure} 
+                    <input
+                      type="number"
+                      value={tenure}
                       onChange={(e) => setTenure(Number(e.target.value))}
                       className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-lg"
                     />
@@ -833,7 +837,7 @@ const Loan = () => {
             </div>
             <div className="flex items-center gap-2">
               <FaSort className="text-gray-400" />
-              <select 
+              <select
                 value={sortBy}
                 onChange={(e) => handleSort(e.target.value)}
                 className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -843,12 +847,15 @@ const Loan = () => {
                 <option value="rate-low">Interest Rate: Low to High</option>
                 <option value="rate-high">Interest Rate: High to Low</option>
               </select>
-              <button 
-                onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
-                className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50"
-              >
-                {sortOrder === 'desc' ? <FaArrowDown /> : <FaArrowUp />}
-              </button>
+              <Link to={'/contact'}>
+                <button
+                  onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
+                  className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                >
+                  {sortOrder === 'desc' ? <FaArrowDown /> : <FaArrowUp />}
+                </button>
+              </Link>
+
             </div>
           </div>
 
@@ -864,7 +871,7 @@ const Loan = () => {
                     </div>
                   )}
 
-                 
+
 
                   {/* Body */}
                   <div className="p-6">
@@ -930,20 +937,24 @@ const Loan = () => {
                   </div>
 
                   {/* Footer */}
-                  <div className="p-6 pt-0 flex gap-3">
-                    <button 
-                      onClick={() => handleApplyNow(loan.id, loan.name)}
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transition-all flex items-center justify-center gap-2"
-                    >
-                      Apply Now
-                      <FaArrowRight />
-                    </button>
-                    <button 
-                      onClick={() => handleDetails(loan.id, loan.name)}
-                      className="flex-1 border-2 border-blue-600 text-blue-600 py-3 rounded-lg font-medium hover:bg-blue-50 transition-all"
-                    >
-                      Details
-                    </button>
+                  <div className="w-full px-2 py-4  flex gap-3">
+                    <Link to={'/contact'} className='flex-1'>
+                      <button
+                        onClick={() => handleApplyNow(loan.id, loan.name)}
+                        className="flex-1 px-8 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transition-all flex items-center justify-center gap-2"
+                      >
+                        Apply Now
+                        <FaArrowRight />
+                      </button>
+                    </Link>
+                    <Link to={'/contact'} className='flex-1'>
+                      <button
+                        onClick={() => handleDetails(loan.id, loan.name)}
+                        className="flex-1 border-2 px-8 border-blue-600 text-blue-600 py-3 rounded-lg font-medium hover:bg-blue-50 transition-all"
+                      >
+                        Details
+                      </button>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -955,16 +966,18 @@ const Loan = () => {
               <p className="text-gray-600 mb-6">
                 We couldn't find any loans matching your criteria. Try adjusting your filters.
               </p>
-              <button 
-                onClick={() => {
-                  setSelectedLoanType('all');
-                  setSelectedAmount('all');
-                  setSearchQuery('');
-                }}
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-all"
-              >
-                Reset All Filters
-              </button>
+              <Link to={'/contact'}>
+                <button
+                  onClick={() => {
+                    setSelectedLoanType('all');
+                    setSelectedAmount('all');
+                    setSearchQuery('');
+                  }}
+                  className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-all"
+                >
+                  Reset All Filters
+                </button>
+              </Link>
             </div>
           )}
 
@@ -980,8 +993,8 @@ const Loan = () => {
                 { icon: <FaHandshake className="text-4xl text-orange-600" />, title: 'Expert Guidance', desc: 'Dedicated relationship manager for assistance' },
                 { icon: <FaShieldAlt className="text-4xl text-red-600" />, title: '100% Secure', desc: 'Your data is encrypted and protected' },
               ].map((feature, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   onClick={() => handleNavigate('/contact', { source: `feature_${index}` })}
                   className="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-all cursor-pointer group"
                 >
@@ -1005,8 +1018,8 @@ const Loan = () => {
                 { step: 3, icon: <FaEnvelope />, title: 'Upload Documents', desc: 'Upload required documents digitally' },
                 { step: 4, icon: <FaCheckCircle />, title: 'Get Approval', desc: 'Receive loan approval and disbursal' },
               ].map((step, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   onClick={() => handleNavigate('/contact', { source: `process_step_${step.step}` })}
                   className="relative bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-all cursor-pointer"
                 >
@@ -1028,25 +1041,25 @@ const Loan = () => {
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Frequently Asked Questions</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { 
-                  q: 'What documents are required for a loan?', 
-                  a: 'Typically, you need ID proof, address proof, income proof (salary slips/IT returns), and bank statements. Requirements vary by loan type.' 
+                {
+                  q: 'What documents are required for a loan?',
+                  a: 'Typically, you need ID proof, address proof, income proof (salary slips/IT returns), and bank statements. Requirements vary by loan type.'
                 },
-                { 
-                  q: 'How is my eligibility determined?', 
-                  a: 'Eligibility is based on your income, credit score, age, employment type, and existing financial obligations.' 
+                {
+                  q: 'How is my eligibility determined?',
+                  a: 'Eligibility is based on your income, credit score, age, employment type, and existing financial obligations.'
                 },
-                { 
-                  q: 'Can I prepay my loan?', 
-                  a: 'Yes, most loans allow prepayment. Some lenders may charge a prepayment penalty. Check terms before applying.' 
+                {
+                  q: 'Can I prepay my loan?',
+                  a: 'Yes, most loans allow prepayment. Some lenders may charge a prepayment penalty. Check terms before applying.'
                 },
-                { 
-                  q: 'How long does loan approval take?', 
-                  a: 'Approval time varies from 24 hours to 7 working days depending on loan type and lender\'s processes.' 
+                {
+                  q: 'How long does loan approval take?',
+                  a: 'Approval time varies from 24 hours to 7 working days depending on loan type and lender\'s processes.'
                 },
               ].map((faq, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   onClick={() => handleNavigate('/contact', { source: `faq_${index}` })}
                   className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all cursor-pointer"
                 >
@@ -1069,41 +1082,49 @@ const Loan = () => {
               Compare loans from top banks and get the best deal for your needs
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <button 
-                onClick={() => handleNavigate('/contact', { source: 'cta_apply' })}
-                className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2"
-              >
-                Apply Now
-                <FaArrowRight />
-              </button>
-              <button 
-                onClick={handleTalkToExpert}
-                className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all inline-flex items-center gap-2"
-              >
-                <FaPhone /> Talk to Expert
-              </button>
+              <Link to={'/contact'}>
+                <button
+                  onClick={() => handleNavigate('/contact', { source: 'cta_apply' })}
+                  className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2"
+                >
+                  Apply Now
+                  <FaArrowRight />
+                </button>
+              </Link>
+              <Link to={'/contact'}>
+                <button
+                  onClick={handleTalkToExpert}
+                  className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all inline-flex items-center gap-2"
+                >
+                  <FaPhone /> Talk to Expert
+                </button>
+              </Link>
             </div>
             <div className="flex flex-col sm:flex-row gap-6 justify-center text-sm">
-              <button 
-                onClick={handleWhatsApp}
-                className="flex items-center gap-2 hover:underline"
-              >
-                <FaWhatsapp className="text-xl" /> WhatsApp: +91 98765 43210
-              </button>
-              <button 
-                onClick={handleEmail}
-                className="flex items-center gap-2 hover:underline"
-              >
-                <FaEnvelope className="text-xl" /> loans@fintechhub.com
-              </button>
+              <Link to={'/contact'}>
+                <button
+                  onClick={handleWhatsApp}
+                  className="flex items-center gap-2 hover:underline"
+                >
+                  <FaWhatsapp className="text-xl" /> WhatsApp: +91 98765 43210
+                </button>
+              </Link>
+              <Link to={'/contact'}>
+                <button
+                  onClick={handleEmail}
+                  className="flex items-center gap-2 hover:underline"
+                >
+                  <FaEnvelope className="text-xl" /> support@vdsfinancesolution.com
+                </button>
+              </Link>
             </div>
           </section>
         </div>
 
-        
-        
 
-       
+
+
+
       </div>
     </Wraper>
   );

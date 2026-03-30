@@ -38,12 +38,10 @@ const TeamMember = ({ name, role, bio }) => {
     const firstChar = name.charAt(0);
     const lastChar = name.charAt(name.length - 1);
     const middlePart = name.slice(1, -1);
-    
+
     return (
       <span className="text-xl font-bold text-gray-900 mb-1">
-        <span className="bg-blue-600 text-white px-1 rounded-l">{firstChar}</span>
-        {middlePart}
-        <span className="bg-blue-600 text-white px-1 rounded-r">{lastChar}</span>
+        {name}
       </span>
     );
   };
@@ -58,7 +56,7 @@ const TeamMember = ({ name, role, bio }) => {
           </span>
         </div>
       </div>
-      
+
       <div className="p-6">
         <h3 className="text-xl font-bold text-gray-900 mb-1">
           {formatName(name)}
@@ -128,35 +126,35 @@ const About = () => {
     {
       id: 1,
       name: 'Sanjay Giri',
-      role: 'CEO',
+      role: 'CEO & Director',
       bio: '5+ years in investment banking and wealth management. Former Managing Director at Morgan Stanley.',
     },
     {
       id: 2,
-      name: 'Sonu Giri',
-      role: 'Manager',
+      name: 'Miss Sushma',
+      role: 'Director',
       bio: 'CFA charterholder with expertise in portfolio management and risk assessment.',
     },
     {
       id: 3,
-      name: 'Priya Sharma',
-      role: 'Senior Financial Advisor',
+      name: 'Sonu Giri',
+      role: 'Manager',
       bio: '15+ years experience in wealth management and retirement planning.',
     },
   ];
 
   // Milestones data (corrected timeline format)
   const milestones = [
-    { year: '1998', event: 'Company founded in New York City' },
-    { year: '2005', event: 'Expanded to West Coast operations' },
-    { year: '2012', event: 'Launched digital wealth management platform' },
-    { year: '2018', event: 'Reached $1B in assets under management' },
-    { year: '2023', event: 'Named "Top Financial Advisor" by Forbes' },
+    { year: '2021', event: 'Company founded in Indai' },
+    { year: '2022', event: 'Expanded to West Coast operations' },
+    { year: '2023', event: 'Launched digital wealth management platform' },
+    { year: '2024', event: 'Reached ₹1B in assets under management' },
+    { year: '2025', event: 'Named "Top Financial Advisor" by Forbes' },
   ];
 
   return (
     <Wraper>
-      <div className="bg-white text-gray-900">
+      <div className="bg-white text-gray-900 pt-20">
         {/* Hero Section with Parallax Effect */}
         <section className="relative bg-gradient-to-r from-blue-50 via-white to-blue-50 text-gray-900 overflow-hidden">
           <div className="absolute inset-0 bg-white/50" />
@@ -165,17 +163,17 @@ const About = () => {
               Building Financial Futures
             </h1>
             <p className="text-xl md:text-2xl text-center max-w-3xl mb-8 text-gray-600">
-              We're more than just financial advisors – we're partners in your journey toward 
+              We're more than just financial advisors – we're partners in your journey toward
               financial independence and lasting wealth.
             </p>
-            <button 
+            <button
               onClick={() => document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105"
             >
               Discover Our Story
             </button>
           </div>
-          
+
           {/* Animated Background Elements */}
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
         </section>
@@ -197,21 +195,19 @@ const About = () => {
             <div className="flex justify-center space-x-4 mb-8">
               <button
                 onClick={() => setActiveTab('mission')}
-                className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                  activeTab === 'mission' 
-                    ? 'bg-blue-600 text-white' 
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
-                }`}
+                className={`px-6 py-2 rounded-full font-semibold transition-all ${activeTab === 'mission'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                  }`}
               >
                 Our Mission
               </button>
               <button
                 onClick={() => setActiveTab('vision')}
-                className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                  activeTab === 'vision' 
-                    ? 'bg-blue-600 text-white' 
-                    : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
-                }`}
+                className={`px-6 py-2 rounded-full font-semibold transition-all ${activeTab === 'vision'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                  }`}
               >
                 Our Vision
               </button>
@@ -221,15 +217,15 @@ const About = () => {
               {activeTab === 'mission' ? (
                 <div className="text-center">
                   <p className="text-xl text-gray-700 leading-relaxed">
-                    To empower individuals and businesses with sophisticated financial strategies 
-                    that preserve wealth, create sustainable growth, and build lasting prosperity 
+                    To empower individuals and businesses with sophisticated financial strategies
+                    that preserve wealth, create sustainable growth, and build lasting prosperity
                     for generations to come.
                   </p>
                 </div>
               ) : (
                 <div className="text-center">
                   <p className="text-xl text-gray-700 leading-relaxed">
-                    To be the most trusted partner in financial wellness, recognized for our 
+                    To be the most trusted partner in financial wellness, recognized for our
                     integrity, innovation, and unwavering commitment to our clients' success.
                   </p>
                 </div>
@@ -265,29 +261,29 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 text-gray-700">
                   <p className="leading-relaxed">
-                    Founded in 1998 by Sarah Johnson, FinanceCorp began with a simple belief: 
-                    that everyone deserves access to expert financial advice. What started as a 
-                    small office with just three employees in downtown New York has grown into 
+                    Founded in 2019 by Mr. Sanjay Giri, VDS Finance began with a simple belief:
+                    that everyone deserves access to expert financial advice. What started as a
+                    small office with just three employees in downtown India has grown into
                     one of the nation's most trusted financial advisory firms.
                   </p>
                   <p className="leading-relaxed">
-                    Through market ups and downs, technological revolutions, and changing economic 
-                    landscapes, our commitment to our clients has never wavered. We've helped 
-                    thousands of families achieve their dreams – from buying their first home 
+                    Through market ups and downs, technological revolutions, and changing economic
+                    landscapes, our commitment to our clients has never wavered. We've helped
+                    thousands of families achieve their dreams – from buying their first home
                     to retiring comfortably.
                   </p>
-                  
+
                   {/* Read More Toggle */}
                   {showFullStory && (
                     <p className="leading-relaxed animate-fade-in">
-                      Today, with offices in 12 major cities and a team of over 200 certified 
-                      financial professionals, we continue to innovate and adapt to meet the 
-                      evolving needs of our clients. Our digital platform now serves clients 
-                      in 45 states, making quality financial advice accessible to everyone, 
+                      Today, with offices in 12 major cities and a team of over 200 certified
+                      financial professionals, we continue to innovate and adapt to meet the
+                      evolving needs of our clients. Our digital platform now serves clients
+                      in 29 states, making quality financial advice accessible to everyone,
                       everywhere.
                     </p>
                   )}
-                  
+
                   <button
                     onClick={() => setShowFullStory(!showFullStory)}
                     className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
@@ -321,7 +317,7 @@ const About = () => {
                 </div>
                 <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg border border-gray-100">
                   <p className="text-sm text-gray-600">Trusted by</p>
-                  <p className="text-3xl font-bold text-blue-600">15,000+</p>
+                  <p className="text-3xl font-bold text-blue-600">25,000+</p>
                   <p className="text-xs text-gray-500">Happy Clients</p>
                 </div>
               </div>
@@ -350,7 +346,7 @@ const About = () => {
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
-              Why Choose FinanceCorp?
+              Why Choose VDS Finance?
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
@@ -360,7 +356,7 @@ const About = () => {
                   icon: '✨'
                 },
                 {
-                  title: 'Transparent Fees',
+                  title: 'Tra  nsparent Fees',
                   description: 'No hidden charges, no surprise fees. We believe in complete transparency in all our dealings.',
                   icon: '🔍'
                 },
@@ -391,12 +387,12 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to={'/contact'}>
-              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
-                Schedule Free Consultation
-              </button>
+                <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105">
+                  Schedule Free Consultation
+                </button>
               </Link>
-              
-             
+
+
             </div>
             <p className="mt-6 text-sm text-blue-100">
               No obligation. No spam. Just expert financial advice.

@@ -60,6 +60,17 @@ import { AiFillSafetyCertificate, AiOutlineStock } from 'react-icons/ai';
 import Wraper from '../components/Architure/Wraper';
 import Scroll from '../components/Common/Scroll'
 import { Link } from 'react-router-dom';
+import LandingPage from '../components/Home/LandingPage';
+import {
+
+  MdAccountBalance,
+  MdSecurity,
+  MdHome,
+  MdDirectionsCar,
+  MdCreditCard
+} from 'react-icons/md';
+
+
 
 const HomePage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -97,49 +108,48 @@ const HomePage = () => {
     { name: 'Contact', href: '#contact' }
   ];
 
-  // Services data
   const services = [
     {
       icon: MdOutlineInventory2,
-      title: 'Investment Advisory',
+      title: 'Personal Loan',
       description: 'Professional investment guidance to grow your wealth with personalized strategies.',
       color: 'from-blue-500 to-blue-600',
-      features: ['Portfolio Management', 'Risk Assessment', 'Market Analysis']
+      features: ['Quick Approval', 'Flexible EMI Options', 'No Collateral Required', 'Competitive Interest Rates']
     },
     {
       icon: FaPiggyBank,
-      title: 'Retirement Planning',
+      title: 'Business Loan',
       description: 'Secure your future with comprehensive retirement planning and wealth management.',
       color: 'from-blue-600 to-blue-700',
-      features: ['401(k) Planning', 'IRA Strategies', 'Income Projections']
+      features: ['Working Capital', 'Equipment Financing', 'Business Expansion', 'Invoice Financing']
     },
     {
       icon: FaShieldAlt,
-      title: 'Insurance Solutions',
+      title: 'Property Loan',
       description: 'Protect what matters most with customized insurance coverage for life and health.',
       color: 'from-blue-500 to-blue-600',
-      features: ['Life Insurance', 'Health Coverage', 'Disability Insurance']
+      features: ['High Loan Amount', 'Long Repayment Tenure', 'Property Valuation', 'Quick Disbursement']
     },
     {
-      icon: FaHome,
-      title: 'Home Loans',
+      icon: MdHome,
+      title: 'Home Loan',
       description: 'Find the perfect mortgage solution for your dream home with competitive rates.',
       color: 'from-blue-600 to-blue-700',
-      features: ['First-Time Buyer', 'Refinancing', 'FHA/VA Loans']
+      features: ['Low Interest Rates', 'Tax Benefits', 'Flexible Tenure up to 30 Years', 'Quick Processing']
     },
     {
-      icon: FaBriefcase,
-      title: 'Business Banking',
+      icon: MdDirectionsCar,
+      title: 'Car Loan',
       description: 'Comprehensive banking solutions to help your business grow and succeed.',
       color: 'from-blue-500 to-blue-600',
-      features: ['Business Accounts', 'Merchant Services', 'Lines of Credit']
+      features: ['100% On-Road Funding', 'Flexible EMI Options', 'Quick Approval', 'Low Interest Rates']
     },
     {
-      icon: FaTree,
-      title: 'Estate Planning',
+      icon: MdCreditCard,
+      title: 'Credit Card',
       description: 'Preserve your legacy with professional estate planning and trust services.',
       color: 'from-blue-600 to-blue-700',
-      features: ['Will Preparation', 'Trusts', 'Asset Protection']
+      features: ['Reward Points', 'Fuel Surcharge Waiver', 'Contactless Payment', 'Travel Benefits']
     }
   ];
 
@@ -217,77 +227,8 @@ const HomePage = () => {
 
   return (
     <Wraper>
-      <div className="bg-white text-gray-800">
-        {/* Hero Section */}
-        <section id="home" className="relative flex items-center pt-10">
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left Content */}
-              <div>
-                <div className="inline-flex items-center bg-blue-100 rounded-full px-4 py-2 mb-6">
-                  <HiOutlineSparkles className="h-5 w-5 text-blue-600 mr-2" />
-                  <span className="text-blue-600 font-semibold">Trusted by 50,000+ Clients</span>
-                </div>
-
-                <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                  Your Financial Future,
-                  <span className="text-blue-600"> Our Expertise</span>
-                </h1>
-
-                <p className="text-xl text-gray-600 mb-8 max-w-lg">
-                  Professional financial guidance tailored to your unique goals. From investments to retirement, we're here to help you succeed.
-                </p>
-
-                <div className="flex flex-wrap gap-4 mb-8">
-                  <Link to={'/contact'}>
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all transform hover:scale-105 flex items-center space-x-2">
-                      <span>Start Free Consultation</span>
-                      <FaArrowRight className="h-4 w-4" />
-                    </button>
-                  </Link>
-                  <Link to={'/contact'}>
-                    <button className="bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-semibold transition-all flex items-center space-x-2">
-                      <FaPhone className="h-4 w-4" />
-                      <span>Call Us Today</span>
-                    </button>
-                  </Link>
-
-                </div>
-
-                {/* Trust Badges */}
-                {/* <div className="flex flex-wrap gap-6">
-                  {partners.map((partner, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <partner.icon className="h-5 w-5 text-blue-500" />
-                      <span className="text-gray-500 text-sm">{partner.name}</span>
-                    </div>
-                  ))}
-                </div> */}
-              </div>
-
-              {/* Right Content - Stats Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {stats.map((stat, index) => (
-                  <div
-                    key={index}
-                    className="bg-white shadow-lg rounded-2xl p-6 border border-gray-100 hover:border-blue-500 transition-all transform hover:scale-105"
-                  >
-                    <stat.icon className="h-8 w-8 text-blue-600 mb-4" />
-                    <p className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</p>
-                    <p className="text-gray-500">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Scroll Indicator */}
-            {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-              <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
-                <div className="w-1 h-3 bg-blue-500 rounded-full mt-2 animate-pulse"></div>
-              </div>
-            </div> */}
-          </div>
-        </section>
+      <div className="bg-white text-gray-800 pt-20">
+        <LandingPage />
 
         {/* Services Section */}
         <section id="services" className="py-20 bg-white">
@@ -549,7 +490,7 @@ const HomePage = () => {
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-32 -translate-x-32"></div>
 
-              <div className="relative z-10 text-center max-w-3xl mx-auto">
+              <div className="relative  text-center max-w-3xl mx-auto">
                 <h2 className="text-4xl font-bold text-white mb-4">Ready to Take Control of Your Financial Future?</h2>
                 <p className="text-xl text-white/90 mb-8">
                   Schedule a free consultation with one of our expert advisors today and get a personalized financial plan.
@@ -575,7 +516,7 @@ const HomePage = () => {
         </section>
 
         <Scroll />
-        
+
       </div>
     </Wraper>
   );

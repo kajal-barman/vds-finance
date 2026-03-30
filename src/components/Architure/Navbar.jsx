@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaBars, 
-  FaTimes, 
+import {
+  FaBars,
+  FaTimes,
   FaChevronDown,
   FaChevronRight,
-  FaHome, 
-  FaInfoCircle, 
-  FaCogs, 
-  FaCreditCard, 
-  FaCalculator, 
+  FaHome,
+  FaInfoCircle,
+  FaCogs,
+  FaCreditCard,
+  FaCalculator,
   FaHandHoldingUsd,
   FaHeadset,
   FaArrowRight,
@@ -44,8 +44,8 @@ const Navbar = () => {
   // Close drawer when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (drawerRef.current && !drawerRef.current.contains(event.target) && 
-          !menuButtonRef.current.contains(event.target)) {
+      if (drawerRef.current && !drawerRef.current.contains(event.target) &&
+        !menuButtonRef.current.contains(event.target)) {
         setIsDrawerOpen(false);
         setActiveSubmenu(null);
       }
@@ -112,9 +112,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
-      }`}>
+      <nav className={`fixed top-0 left-0 right-0 w-full z-[99999] transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
+        }`}>
         <div className="mx-auto px-4 sm:px-6 lg:px-8 h-20">
           <div className="flex justify-between items-center h-full">
             {/* Logo */}
@@ -133,18 +132,22 @@ const Navbar = () => {
               <Link to="/services" className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-all duration-300 hover:translate-y-[-2px]">
                 Services
               </Link>
-              
+              <Link to="/foreclosure-calculator" className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-all duration-300 hover:translate-y-[-2px]">
+                Foreclosure Calculator
+              </Link>
+
+
               {/* Desktop Dropdown */}
-              <div className="relative">
+              <div className="relative z-[100000]">
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
                   className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-all duration-300 hover:translate-y-[-2px] flex items-center"
                 >
                   Financial Tools <FaChevronDown className={`ml-1 text-xs transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
-                
+
                 {dropdownOpen && (
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-xl py-2 z-50 border border-gray-100">
+                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-xl py-2 z-[100000] border border-gray-100">
                     {menuItems.find(item => item.id === 'financial').submenu.map((item, index) => (
                       <Link
                         key={index}
@@ -240,10 +243,9 @@ const Navbar = () => {
                               </span>
                               {item.title}
                             </span>
-                            <FaChevronDown 
-                              className={`text-gray-400 transition-all duration-300 ${
-                                activeSubmenu === item.id ? 'rotate-180 text-blue-600' : ''
-                              }`} 
+                            <FaChevronDown
+                              className={`text-gray-400 transition-all duration-300 ${activeSubmenu === item.id ? 'rotate-180 text-blue-600' : ''
+                                }`}
                             />
                           </button>
 
@@ -308,7 +310,7 @@ const Navbar = () => {
                   </span>
                 </Link>
 
-                
+
 
                 {/* Social Links */}
                 {/*  */}

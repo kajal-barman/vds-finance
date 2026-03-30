@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Wraper from '../components/Architure/Wraper';
-import {FaRegHeart,FaList,FaThLarge,FaTimesCircle,FaUserGraduate,FaExclamationTriangle } from 'react-icons/fa'
-import { 
-  FaSearch, 
-  FaBuilding, 
-  FaCreditCard, 
-  FaPlane, 
-  FaShoppingBag, 
-  FaGasPump, 
-  FaUtensils, 
-  FaCrown, 
-  FaGift, 
-  FaMoneyBillWave, 
+import { FaRegHeart, FaList, FaThLarge, FaTimesCircle, FaUserGraduate, FaExclamationTriangle } from 'react-icons/fa'
+import {
+  FaSearch,
+  FaBuilding,
+  FaCreditCard,
+  FaPlane,
+  FaShoppingBag,
+  FaGasPump,
+  FaUtensils,
+  FaCrown,
+  FaGift,
+  FaMoneyBillWave,
   FaFilm,
   FaArrowRight,
   FaCheckCircle,
@@ -27,9 +27,9 @@ import {
   FaGem,
 
   FaStar,
-  
+
   FaInfoCircle,
-  
+
   FaPercentage,
   FaCalendarAlt,
   FaGlobe,
@@ -38,36 +38,37 @@ import {
   FaArrowUp,
   FaArrowDown,
   FaFire,
-  
+
   FaPhone,
   FaEnvelope,
   FaFacebook,
   FaTwitter,
   FaInstagram,
   FaLinkedin,
-  
+
   FaHome,
   FaBlog,
   FaFileAlt,
   FaBriefcase,
   FaHeart,
   FaShare,
-  
+
   FaEye,
 } from 'react-icons/fa';
-import { 
-  MdAirportShuttle, 
-  
+import {
+  MdAirportShuttle,
+
   MdCompareArrows,
-  
-  
+
+
 } from 'react-icons/md';
 
-import { 
-  
+import {
+
   GiDiamondTrophy,
-  
+
 } from 'react-icons/gi';
+import { Link } from 'react-router-dom';
 
 const CreditCard = () => {
   // State Management
@@ -734,7 +735,7 @@ const CreditCard = () => {
         'Global acceptance',
       ],
       applyLink: '/apply/amex-mr',
-      
+
       reviews: 1890,
       popularity: 88,
       approvalRate: '82%',
@@ -816,26 +817,26 @@ const CreditCard = () => {
     return creditCards.filter(card => {
       // Bank filter
       const bankMatch = selectedBank === 'all' || card.bank === selectedBank;
-      
+
       // Card type filter
       const typeMatch = selectedCardType === 'all' || card.type.includes(selectedCardType);
-      
+
       // Search filter
-      const searchMatch = searchQuery === '' || 
+      const searchMatch = searchQuery === '' ||
         card.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         card.bankName.toLowerCase().includes(searchQuery.toLowerCase()) ||
         card.type.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
-      
+
       // Features filter
-      const featuresMatch = selectedFeatures.length === 0 || 
+      const featuresMatch = selectedFeatures.length === 0 ||
         selectedFeatures.every(f => card.features.includes(f));
-      
+
       // Price range filter
       const priceMatch = card.annualFee >= priceRange.min && card.annualFee <= priceRange.max;
-      
+
       // Eligibility check (if income entered)
       const eligibilityMatch = !userIncome || checkEligibility(card);
-      
+
       return bankMatch && typeMatch && searchMatch && featuresMatch && priceMatch && eligibilityMatch;
     }).sort((a, b) => {
       let comparison = 0;
@@ -877,15 +878,14 @@ const CreditCard = () => {
 
   return (
     <Wraper>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 pt-20">
         {/* Notification Toast */}
         {showNotification.show && (
-          <div className={`fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg flex items-center gap-3 animate-slideIn ${
-            showNotification.type === 'success' ? 'bg-green-500' :
+          <div className={`fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg flex items-center gap-3 animate-slideIn ${showNotification.type === 'success' ? 'bg-green-500' :
             showNotification.type === 'warning' ? 'bg-yellow-500' :
-            showNotification.type === 'error' ? 'bg-red-500' :
-            'bg-blue-500'
-          } text-white`}>
+              showNotification.type === 'error' ? 'bg-red-500' :
+                'bg-blue-500'
+            } text-white`}>
             {showNotification.type === 'success' && <FaCheckCircle />}
             {showNotification.type === 'warning' && <FaExclamationTriangle />}
             {showNotification.type === 'error' && <FaTimesCircle />}
@@ -894,15 +894,15 @@ const CreditCard = () => {
           </div>
         )}
 
-      
-        
+
+
 
         {/* Hero Section with Advanced Search */}
         <section className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-16 md:py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-black opacity-10"></div>
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-white opacity-10 rounded-full"></div>
           <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white opacity-10 rounded-full"></div>
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -912,10 +912,10 @@ const CreditCard = () => {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-                Compare 50+ credit cards from 15+ top banks. Get the best rewards, 
+                Compare 50+ credit cards from 15+ top banks. Get the best rewards,
                 lowest fees, and exclusive benefits tailored to your lifestyle.
               </p>
-              
+
               {/* Advanced Search Bar */}
               <div className="max-w-3xl mx-auto mb-8">
                 <div className="bg-white rounded-2xl p-2 flex flex-col md:flex-row gap-2">
@@ -929,15 +929,19 @@ const CreditCard = () => {
                       className="w-full pl-12 pr-4 py-4 rounded-xl text-gray-900 focus:outline-none"
                     />
                   </div>
-                  <button 
-                    onClick={() => setShowFiltersMobile(true)}
-                    className="md:hidden bg-gray-100 text-gray-700 px-6 py-4 rounded-xl flex items-center justify-center gap-2"
-                  >
-                    <FaFilter /> Filters
-                  </button>
-                  <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2">
-                    <FaSearch /> Search
-                  </button>
+                  <Link to={'/contact'}>
+                    <button
+                      onClick={() => setShowFiltersMobile(true)}
+                      className="md:hidden bg-gray-100 text-gray-700 px-6 py-4 rounded-xl flex items-center justify-center gap-2"
+                    >
+                      <FaFilter /> Filters
+                    </button>
+                  </Link>
+                  <Link to={'/contact'}>
+                    <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                      <FaSearch /> Search
+                    </button>
+                  </Link>
                 </div>
               </div>
 
@@ -965,13 +969,15 @@ const CreditCard = () => {
               <div className="mt-8 flex flex-wrap justify-center gap-2">
                 <span className="text-sm opacity-80">Popular:</span>
                 {['Cashback', 'Travel', 'Lifetime Free', 'Premium', 'Fuel'].map((term, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setSearchQuery(term)}
-                    className="text-sm bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full transition-all"
-                  >
-                    {term}
-                  </button>
+                  <Link to={'/contact'}>
+                    <button
+                      key={index}
+                      onClick={() => setSearchQuery(term)}
+                      className="text-sm bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full transition-all"
+                    >
+                      {term}
+                    </button>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -1004,9 +1010,11 @@ const CreditCard = () => {
                   onChange={(e) => setUserCreditScore(e.target.value)}
                   className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 />
-                <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-all">
-                  Check Now
-                </button>
+                <Link to={'/contact'}>
+                  <button className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-all">
+                    Check Now
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -1021,9 +1029,11 @@ const CreditCard = () => {
                 <FaFire className="text-red-500" />
                 Featured Cards
               </h2>
-              <button className="text-blue-600 hover:text-blue-700 flex items-center gap-1">
-                View All <FaArrowRight className="text-sm" />
-              </button>
+              <Link to={'/contact'}>
+                <button className="text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                  View All <FaArrowRight className="text-sm" />
+                </button>
+              </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {featuredCards.map(card => (
@@ -1042,12 +1052,15 @@ const CreditCard = () => {
                       <span className="text-xs text-gray-500">Annual Fee</span>
                       <p className="font-bold text-gray-900">{formatCurrency(card.annualFee)}</p>
                     </div>
-                    <button 
-                      onClick={() => window.location.href = card.applyLink}
-                      className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-all"
-                    >
-                      Apply Now
-                    </button>
+                    <Link to={'/contact'}>
+
+                      <button
+                        onClick={() => window.location.href = card.applyLink}
+                        className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-all"
+                      >
+                        Apply Now
+                      </button>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -1064,18 +1077,20 @@ const CreditCard = () => {
                     <FaFilter className="text-blue-600" />
                     Filters
                   </h2>
-                  <button 
-                    onClick={() => {
-                      setSelectedBank('all');
-                      setSelectedCardType('all');
-                      setSearchQuery('');
-                      setSelectedFeatures([]);
-                      setPriceRange({ min: 0, max: 15000 });
-                    }}
-                    className="text-sm text-blue-600 hover:text-blue-700"
-                  >
-                    Reset All
-                  </button>
+                  <Link to={'/contact'}>
+                    <button
+                      onClick={() => {
+                        setSelectedBank('all');
+                        setSelectedCardType('all');
+                        setSearchQuery('');
+                        setSelectedFeatures([]);
+                        setPriceRange({ min: 0, max: 15000 });
+                      }}
+                      className="text-sm text-blue-600 hover:text-blue-700"
+                    >
+                      Reset All
+                    </button>
+                  </Link>
                 </div>
 
                 {/* Bank Filter */}
@@ -1086,27 +1101,27 @@ const CreditCard = () => {
                   </label>
                   <div className="space-y-2 max-h-60 overflow-y-auto">
                     {banks.map(bank => (
-                      <button
-                        key={bank.id}
-                        onClick={() => setSelectedBank(bank.id)}
-                        className={`w-full px-3 py-2 rounded-lg flex items-center justify-between transition-all ${
-                          selectedBank === bank.id 
-                            ? `bg-${bank.color}-100 text-${bank.color}-700` 
+                      <Link to={'/contact'}>
+                        <button
+                          key={bank.id}
+                          onClick={() => setSelectedBank(bank.id)}
+                          className={`w-full px-3 py-2 rounded-lg flex items-center justify-between transition-all ${selectedBank === bank.id
+                            ? `bg-${bank.color}-100 text-${bank.color}-700`
                             : 'hover:bg-gray-100'
-                        }`}
-                      >
-                        <span className="flex items-center gap-2">
-                          <span className={`text-${bank.color}-600`}>{bank.icon}</span>
-                          <span>{bank.name}</span>
-                        </span>
-                        <span className={`text-xs px-2 py-1 rounded-full ${
-                          selectedBank === bank.id 
-                            ? `bg-${bank.color}-200` 
+                            }`}
+                        >
+                          <span className="flex items-center gap-2">
+                            <span className={`text-${bank.color}-600`}>{bank.icon}</span>
+                            <span>{bank.name}</span>
+                          </span>
+                          <span className={`text-xs px-2 py-1 rounded-full ${selectedBank === bank.id
+                            ? `bg-${bank.color}-200`
                             : 'bg-gray-200'
-                        }`}>
-                          {bank.count}
-                        </span>
-                      </button>
+                            }`}>
+                            {bank.count}
+                          </span>
+                        </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -1119,18 +1134,19 @@ const CreditCard = () => {
                   </label>
                   <div className="grid grid-cols-2 gap-2">
                     {cardTypes.map(type => (
-                      <button
-                        key={type.id}
-                        onClick={() => setSelectedCardType(type.id)}
-                        className={`px-3 py-2 rounded-lg text-sm flex items-center gap-2 transition-all ${
-                          selectedCardType === type.id 
-                            ? `bg-${type.color}-100 text-${type.color}-700` 
+                      <Link to={'/contact'}>
+                        <button
+                          key={type.id}
+                          onClick={() => setSelectedCardType(type.id)}
+                          className={`px-3 py-2 rounded-lg text-sm flex items-center gap-2 transition-all ${selectedCardType === type.id
+                            ? `bg-${type.color}-100 text-${type.color}-700`
                             : 'bg-gray-50 hover:bg-gray-100'
-                        }`}
-                      >
-                        <span className={`text-${type.color}-600`}>{type.icon}</span>
-                        <span className="truncate">{type.name}</span>
-                      </button>
+                            }`}
+                        >
+                          <span className={`text-${type.color}-600`}>{type.icon}</span>
+                          <span className="truncate">{type.name}</span>
+                        </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -1198,20 +1214,24 @@ const CreditCard = () => {
                         return (
                           <div key={id} className="flex justify-between items-center text-sm">
                             <span>{card?.name}</span>
-                            <button 
-                              onClick={() => toggleCompare(id)}
-                              className="text-red-500 hover:text-red-600"
-                            >
-                              <FaTimes />
-                            </button>
+                            <Link to={'/contact'}>
+                              <button
+                                onClick={() => toggleCompare(id)}
+                                className="text-red-500 hover:text-red-600"
+                              >
+                                <FaTimes />
+                              </button>
+                            </Link>
                           </div>
                         );
                       })}
                     </div>
                     {compareList.length === 2 && (
-                      <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all">
-                        Compare Now
-                      </button>
+                      <Link to={'/contact'}>
+                        <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all">
+                          Compare Now
+                        </button>
+                      </Link>
                     )}
                   </div>
                 )}
@@ -1228,12 +1248,12 @@ const CreditCard = () => {
                       <span className="text-2xl font-bold text-gray-900">{filteredCards.length}</span>
                       <span className="ml-2">credit cards found</span>
                     </div>
-                    
+
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2">
                       <FaSortAmountDown className="text-gray-400" />
-                      <select 
+                      <select
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
                         className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -1246,12 +1266,14 @@ const CreditCard = () => {
                         <option value="newest">Newest First</option>
                       </select>
                     </div>
-                    <button 
-                      onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
-                      className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50"
-                    >
-                      {sortOrder === 'desc' ? <FaArrowDown /> : <FaArrowUp />}
-                    </button>
+                    <Link to={'/contact'}>
+                      <button
+                        onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
+                        className="p-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+                      >
+                        {sortOrder === 'desc' ? <FaArrowDown /> : <FaArrowUp />}
+                      </button>
+                    </Link>
                   </div>
                 </div>
 
@@ -1261,25 +1283,31 @@ const CreditCard = () => {
                     {selectedBank !== 'all' && (
                       <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm flex items-center gap-2">
                         Bank: {banks.find(b => b.id === selectedBank)?.name}
-                        <button onClick={() => setSelectedBank('all')}>
-                          <FaTimes className="text-xs" />
-                        </button>
+                        <Link to={'/contact'}>
+                          <button onClick={() => setSelectedBank('all')}>
+                            <FaTimes className="text-xs" />
+                          </button>
+                        </Link>
                       </span>
                     )}
                     {selectedCardType !== 'all' && (
                       <span className="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm flex items-center gap-2">
                         Type: {cardTypes.find(t => t.id === selectedCardType)?.name}
-                        <button onClick={() => setSelectedCardType('all')}>
-                          <FaTimes className="text-xs" />
-                        </button>
+                        <Link to={'/contact'}>
+                          <button onClick={() => setSelectedCardType('all')}>
+                            <FaTimes className="text-xs" />
+                          </button>
+                        </Link>
                       </span>
                     )}
                     {searchQuery && (
                       <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm flex items-center gap-2">
                         Search: {searchQuery}
-                        <button onClick={() => setSearchQuery('')}>
-                          <FaTimes className="text-xs" />
-                        </button>
+                        <Link to={'/contact'}>
+                          <button onClick={() => setSearchQuery('')}>
+                            <FaTimes className="text-xs" />
+                          </button>
+                        </Link>
                       </span>
                     )}
                     {selectedFeatures.map(feature => {
@@ -1287,9 +1315,11 @@ const CreditCard = () => {
                       return (
                         <span key={feature} className="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm flex items-center gap-2">
                           {f?.name}
-                          <button onClick={() => setSelectedFeatures(selectedFeatures.filter(f => f !== feature))}>
-                            <FaTimes className="text-xs" />
-                          </button>
+                          <Link to={'/contact'}>
+                            <button onClick={() => setSelectedFeatures(selectedFeatures.filter(f => f !== feature))}>
+                              <FaTimes className="text-xs" />
+                            </button>
+                          </Link>
                         </span>
                       );
                     })}
@@ -1300,16 +1330,15 @@ const CreditCard = () => {
               {/* Cards Grid/List */}
               {filteredCards.length > 0 ? (
                 <>
-                  <div className={viewMode === 'grid' 
-                    ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8' 
+                  <div className={viewMode === 'grid'
+                    ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8'
                     : 'space-y-4 mb-8'
                   }>
                     {currentItems.map(card => (
-                      <div 
-                        key={card.id} 
-                        className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all ${
-                          viewMode === 'list' ? 'flex' : ''
-                        }`}
+                      <div
+                        key={card.id}
+                        className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all ${viewMode === 'list' ? 'flex' : ''
+                          }`}
                       >
                         {viewMode === 'grid' ? (
                           // Grid View
@@ -1322,36 +1351,41 @@ const CreditCard = () => {
                                 <span className="font-medium text-gray-600">{card.bankName}</span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <button 
-                                  onClick={() => toggleSave(card.id)}
-                                  className="text-gray-400 hover:text-red-500 transition-colors"
-                                >
-                                  {savedCards.includes(card.id) ? <FaHeart className="text-red-500" /> : <FaRegHeart />}
-                                </button>
-                                <button 
-                                  onClick={() => toggleCompare(card.id)}
-                                  className={`text-gray-400 hover:text-blue-500 transition-colors ${
-                                    compareList.includes(card.id) ? 'text-blue-500' : ''
-                                  }`}
-                                >
-                                  <MdCompareArrows />
-                                </button>
+                                <Link to={'/contact'}>
+                                  <button
+                                    onClick={() => toggleSave(card.id)}
+                                    className="text-gray-400 hover:text-red-500 transition-colors"
+                                  >
+                                    {savedCards.includes(card.id) ? <FaHeart className="text-red-500" /> : <FaRegHeart />}
+                                  </button>
+                                </Link>
+                                <Link to={'/contact'}>
+                                  <button
+                                    onClick={() => toggleCompare(card.id)}
+                                    className={`text-gray-400 hover:text-blue-500 transition-colors ${compareList.includes(card.id) ? 'text-blue-500' : ''
+                                      }`}
+                                  >
+                                    <MdCompareArrows />
+                                  </button>
+                                </Link>
                               </div>
                             </div>
 
                             {/* Card Image */}
                             <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl h-32 mb-4 flex items-center justify-center relative group">
                               <FaCreditCard className="text-5xl text-gray-300" />
-                              <button 
-                                onClick={() => setShowQuickView(card.id)}
-                                className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white gap-2"
-                              >
-                                <FaEye /> Quick View
-                              </button>
+                              <Link to={'/contact'}>
+                                <button
+                                  onClick={() => setShowQuickView(card.id)}
+                                  className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white gap-2"
+                                >
+                                  <FaEye /> Quick View
+                                </button>
+                              </Link>
                             </div>
-                            
+
                             <h3 className="text-xl font-bold text-gray-900 mb-2">{card.name}</h3>
-                            
+
                             {/* Rating */}
                             <div className="flex items-center gap-2 mb-3">
                               <div className="flex">
@@ -1363,7 +1397,7 @@ const CreditCard = () => {
                               </div>
                               <span className="text-sm text-gray-600">({card.reviews})</span>
                             </div>
-                            
+
                             {/* Card Type Badges */}
                             <div className="flex flex-wrap gap-2 mb-4">
                               {card.type.slice(0, 3).map((type, index) => {
@@ -1415,19 +1449,23 @@ const CreditCard = () => {
 
                             {/* Action Buttons */}
                             <div className="flex gap-2">
-                              <button 
-                                className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transition-all flex items-center justify-center gap-2"
-                                onClick={() => window.location.href = card.applyLink}
-                              >
-                                Apply Now
-                                <FaArrowRight className="text-sm" />
-                              </button>
-                              <button 
-                                onClick={() => toggleExpand(card.id)}
-                                className="px-3 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-all"
-                              >
-                                {expandedCards.includes(card.id) ? <FaArrowUp /> : <FaArrowDown />}
-                              </button>
+                              <Link to={'/contact'}>
+                                <button
+                                  className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transition-all flex items-center justify-center gap-2"
+                                  onClick={() => window.location.href = card.applyLink}
+                                >
+                                  Apply Now
+                                  <FaArrowRight className="text-sm" />
+                                </button>
+                              </Link>
+                              <Link to={'/contact'}>
+                                <button
+                                  onClick={() => toggleExpand(card.id)}
+                                  className="px-3 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-all"
+                                >
+                                  {expandedCards.includes(card.id) ? <FaArrowUp /> : <FaArrowDown />}
+                                </button>
+                              </Link>
                             </div>
 
                             {/* Expanded Details */}
@@ -1471,14 +1509,19 @@ const CreditCard = () => {
                                     <p className="text-sm text-gray-600">{card.bankName}</p>
                                   </div>
                                   <div className="flex items-center gap-2">
-                                    <button onClick={() => toggleSave(card.id)}>
-                                      {savedCards.includes(card.id) ? 
-                                        <FaHeart className="text-red-500" /> :null
-                                      }
-                                    </button>
-                                    <button onClick={() => toggleCompare(card.id)}>
-                                      <MdCompareArrows className={compareList.includes(card.id) ? 'text-blue-500' : 'text-gray-400'} />
-                                    </button>
+                                    <Link to={'/contact'}>
+                                      <button onClick={() => toggleSave(card.id)}>
+                                        {savedCards.includes(card.id) ?
+                                          <FaHeart className="text-red-500" /> : null
+                                        }
+                                      </button>
+                                    </Link>
+                                    <Link to={'/contact'}>
+                                      <button onClick={() => toggleCompare(card.id)}>
+                                        <MdCompareArrows className={compareList.includes(card.id) ? 'text-blue-500' : 'text-gray-400'} />
+                                      </button>
+                                    </Link>
+
                                   </div>
                                 </div>
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
@@ -1503,9 +1546,11 @@ const CreditCard = () => {
                                   </div>
                                 </div>
                                 <p className="text-sm text-gray-600 mb-4 line-clamp-2">{card.highlights[0]}</p>
-                                <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all">
-                                  Apply Now
-                                </button>
+                                <Link to={'/contact'}>
+                                  <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all">
+                                    Apply Now
+                                  </button>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -1517,33 +1562,38 @@ const CreditCard = () => {
                   {/* Pagination */}
                   {totalPages > 1 && (
                     <div className="flex justify-center items-center gap-2 mb-8">
-                      <button
-                        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                        disabled={currentPage === 1}
-                        className="px-3 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
-                      >
-                        Previous
-                      </button>
-                      {[...Array(totalPages)].map((_, i) => (
+                      <Link to={'/contact'}>
                         <button
-                          key={i}
-                          onClick={() => setCurrentPage(i + 1)}
-                          className={`w-10 h-10 rounded-lg ${
-                            currentPage === i + 1
+                          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                          disabled={currentPage === 1}
+                          className="px-3 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                        >
+                          Previous
+                        </button>
+                      </Link>
+                      {[...Array(totalPages)].map((_, i) => (
+                        <Link to={'/contact'}>
+                          <button
+                            key={i}
+                            onClick={() => setCurrentPage(i + 1)}
+                            className={`w-10 h-10 rounded-lg ${currentPage === i + 1
                               ? 'bg-blue-600 text-white'
                               : 'border border-gray-300 hover:bg-gray-50'
-                          }`}
-                        >
-                          {i + 1}
-                        </button>
+                              }`}
+                          >
+                            {i + 1}
+                          </button>
+                        </Link>
                       ))}
-                      <button
-                        onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                        disabled={currentPage === totalPages}
-                        className="px-3 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
-                      >
-                        Next
-                      </button>
+                      <Link to={'/contact'}>
+                        <button
+                          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                          disabled={currentPage === totalPages}
+                          className="px-3 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                        >
+                          Next
+                        </button>
+                      </Link>
                     </div>
                   )}
                 </>
@@ -1554,19 +1604,21 @@ const CreditCard = () => {
                   <p className="text-gray-600 mb-6">
                     We couldn't find any cards matching your criteria. Try adjusting your filters.
                   </p>
-                  <button 
-                    className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-all inline-flex items-center gap-2"
-                    onClick={() => {
-                      setSelectedBank('all');
-                      setSelectedCardType('all');
-                      setSearchQuery('');
-                      setSelectedFeatures([]);
-                      setPriceRange({ min: 0, max: 15000 });
-                    }}
-                  >
-                    <FaTimes />
-                    Reset All Filters
-                  </button>
+                  <Link to={'/contact'}>
+                    <button
+                      className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-all inline-flex items-center gap-2"
+                      onClick={() => {
+                        setSelectedBank('all');
+                        setSelectedCardType('all');
+                        setSearchQuery('');
+                        setSelectedFeatures([]);
+                        setPriceRange({ min: 0, max: 15000 });
+                      }}
+                    >
+                      <FaTimes />
+                      Reset All Filters
+                    </button>
+                  </Link>
                 </div>
               )}
             </div>
@@ -1596,8 +1648,8 @@ const CreditCard = () => {
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">Popular Categories</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {cardTypes.filter(t => t.id !== 'all').slice(0, 10).map((category, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-lg transition-all cursor-pointer hover:scale-105 group"
                   onClick={() => setSelectedCardType(category.id)}
                 >
@@ -1732,36 +1784,42 @@ const CreditCard = () => {
               Join 10 million+ satisfied customers who found their ideal credit card with us
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2 mx-auto"
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              >
-                Start Comparing Now
-                <FaArrowRight />
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all">
-                Learn More
-              </button>
+              <Link to={'/contact'}>
+                <button
+                  className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all inline-flex items-center gap-2 mx-auto"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                  Start Comparing Now
+                  <FaArrowRight />
+                </button>
+              </Link>
+              <Link to={'/contact'}>
+                <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all">
+                  Learn More
+                </button>
+              </Link>
             </div>
           </section>
         </div>
-        
-         {/* Mobile Filters Modal */}
+
+        {/* Mobile Filters Modal */}
         {showFiltersMobile && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-50 lg:hidden">
             <div className="absolute right-0 top-0 h-full w-80 bg-white p-6 overflow-y-auto">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold text-gray-900">Filters</h2>
-                <button onClick={() => setShowFiltersMobile(false)}>
-                  <FaTimes className="text-xl" />
-                </button>
+                <Link to={'/contact'}>
+                  <button onClick={() => setShowFiltersMobile(false)}>
+                    <FaTimes className="text-xl" />
+                  </button>
+                </Link>
               </div>
               {/* Mobile filters content - same as desktop filters */}
               <div className="space-y-6">
                 {/* Bank Filter */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-3">Bank</label>
-                  <select 
+                  <select
                     value={selectedBank}
                     onChange={(e) => setSelectedBank(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg"
@@ -1775,7 +1833,7 @@ const CreditCard = () => {
                 {/* Card Type Filter */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-3">Card Category</label>
-                  <select 
+                  <select
                     value={selectedCardType}
                     onChange={(e) => setSelectedCardType(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg"
@@ -1800,13 +1858,14 @@ const CreditCard = () => {
                   />
                   <div className="text-center mt-2">Up to {formatCurrency(priceRange.max)}</div>
                 </div>
-
-                <button 
-                  onClick={() => setShowFiltersMobile(false)}
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg"
-                >
-                  Apply Filters
-                </button>
+                <Link to={'/contact'}>
+                  <button
+                    onClick={() => setShowFiltersMobile(false)}
+                    className="w-full bg-blue-600 text-white py-3 rounded-lg"
+                  >
+                    Apply Filters
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -1823,11 +1882,13 @@ const CreditCard = () => {
                   <div className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <h2 className="text-2xl font-bold text-gray-900">{card.name}</h2>
-                      <button onClick={() => setShowQuickView(null)}>
-                        <FaTimes className="text-xl" />
-                      </button>
+                      <Link to={'/contact'}>
+                        <button onClick={() => setShowQuickView(null)}>
+                          <FaTimes className="text-xl" />
+                        </button>
+                      </Link>
                     </div>
-                    
+
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl h-40 flex items-center justify-center mb-4">
@@ -1843,7 +1904,7 @@ const CreditCard = () => {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
                         <div className="space-y-4">
                           <div>
@@ -1855,7 +1916,7 @@ const CreditCard = () => {
                               </div>
                             ))}
                           </div>
-                          
+
                           <div>
                             <h3 className="font-bold text-gray-900 mb-2">Reward Rates</h3>
                             {card.rewards.map((reward, index) => (
@@ -1865,7 +1926,7 @@ const CreditCard = () => {
                               </div>
                             ))}
                           </div>
-                          
+
                           <div>
                             <h3 className="font-bold text-gray-900 mb-2">Eligibility</h3>
                             <p className="text-sm text-gray-600">Income: {card.eligibility.income}</p>
@@ -1873,13 +1934,14 @@ const CreditCard = () => {
                             <p className="text-sm text-gray-600">Age: {card.eligibility.age}</p>
                           </div>
                         </div>
-                        
-                        <button 
-                          className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-all mt-6"
-                          onClick={() => window.location.href = card.applyLink}
-                        >
-                          Apply Now
-                        </button>
+                        <Link to={'/contact'}>
+                          <button
+                            className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-all mt-6"
+                            onClick={() => window.location.href = card.applyLink}
+                          >
+                            Apply Now
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -1889,8 +1951,8 @@ const CreditCard = () => {
           </div>
         )}
 
-        
-        
+
+
       </div>
     </Wraper>
   );
