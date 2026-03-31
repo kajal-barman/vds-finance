@@ -1,36 +1,19 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Add this import
 import { MdOutlineInventory2 } from "react-icons/md";
-import Wraper from "../components/Architure/Wraper"
+import Wraper from "../components/Architure/Wraper";
 
 import {
-  FaChartLine,
-  FaPiggyBank,
   FaShieldAlt,
-  FaHandsHelping,
   FaUniversity,
-  FaFileInvoiceDollar,
-  FaBalanceScale,
-  FaLandmark,
   FaHome,
   FaCar,
-  FaGraduationCap,
-  FaBriefcase,
-  FaHeartbeat,
-  FaPlane,
-  FaTree,
-  FaGift,
   FaClock,
-  FaCheckCircle,
   FaArrowRight,
   FaPhone,
   FaEnvelope,
-  FaComment,
   FaVideo,
   FaUserTie,
-  FaCalculator,
-  FaFileAlt,
-  FaDownload,
-  FaShare,
   FaStar,
   FaAward,
   FaUsers,
@@ -39,27 +22,14 @@ import {
   FaGem,
   FaDollarSign,
   FaPercent,
-  FaRegCalendarCheck,
-  FaRegClock,
   FaRegBuilding,
-  FaRegSmile,
-  FaRegHandshake,
-  FaRegChartBar
+  FaLandmark
 } from 'react-icons/fa';
 import {
   HiOutlineSparkles,
   HiOutlineLightBulb,
-  HiOutlineTrendingUp,
-  HiOutlineShieldCheck,
-  HiOutlineDocumentText,
-  HiOutlineChartBar,
-  HiOutlineClock,
-  HiOutlineCheckCircle,
-  HiOutlineUserGroup,
-  HiOutlineChip,
-  HiOutlineGlobeAlt
+  HiOutlineShieldCheck
 } from 'react-icons/hi';
-
 
 const ServicesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -67,299 +37,258 @@ const ServicesPage = () => {
   const [bookingStep, setBookingStep] = useState(1);
   const [showBookingModal, setShowBookingModal] = useState(false);
 
-  // Service categories
+  // Service categories (updated for loan & insurance focus)
   const categories = [
     { id: 'all', name: 'All Services', icon: FaRocket },
-    { id: 'investment', name: 'Investment', icon: MdOutlineInventory2 },
-    { id: 'banking', name: 'Banking', icon: FaUniversity },
-    { id: 'insurance', name: 'Insurance', icon: FaShieldAlt },
     { id: 'loan', name: 'Loans', icon: FaHome },
-    { id: 'tax', name: 'Tax & Accounting', icon: FaFileInvoiceDollar },
-    { id: 'retirement', name: 'Retirement', icon: FaTree },
-    { id: 'estate', name: 'Estate Planning', icon: FaBalanceScale }
+    { id: 'insurance', name: 'Insurance', icon: FaShieldAlt },
   ];
 
-  // Services data
+  // Services data (only requested services)
   const services = [
     {
       id: 1,
-      name: 'Investment Advisory',
-      category: 'investment',
-      icon: MdOutlineInventory2,
+      name: 'Personal Loan',
+      category: 'loan',
+      icon: FaDollarSign,
       color: 'from-blue-500 to-blue-600',
-      rating: 4.9,
-      reviews: 1245,
-      price: '$299',
-      duration: '60 min',
-      description: 'Professional investment guidance tailored to your financial goals.',
-      longDescription: 'Get personalized investment advice from certified financial advisors. We help you build a diversified portfolio that aligns with your risk tolerance and financial objectives.',
+      rating: 4.8,
+      reviews: 1250,
+      price: 'Starting at 10.5% APR',
+      duration: '30 min',
+      description: 'Quick and flexible personal loans for any legitimate need.',
+      longDescription: 'Get funds for any personal expense with competitive interest rates and flexible repayment terms. Our personal loans are designed to help you achieve your goals without financial stress.',
       features: [
-        'Personalized portfolio management',
-        'Risk assessment and analysis',
-        'Regular portfolio reviews',
-        'Market insights and updates',
-        'Tax-efficient investing strategies',
-        'Retirement planning integration'
+        'Loan amounts from ₹50,000 to ₹50,00,000',
+        'Flexible repayment tenure up to 60 months',
+        'Minimal documentation required',
+        'Quick approval within 48 hours',
+        'No collateral required',
+        'Competitive interest rates'
       ],
       benefits: [
-        'Maximize returns on investments',
-        'Minimize tax liability',
-        'Diversified portfolio',
-        'Professional market analysis'
+        'Instant access to funds',
+        'No hidden charges',
+        'Prepayment flexibility',
+        '100% digital process'
       ],
       advisors: [
-        { name: 'Sarah Johnson', title: 'Senior Investment Advisor', exp: '15 years', rating: 4.9, image: 'SJ' },
-        { name: 'Michael Chen', title: 'Portfolio Manager', exp: '12 years', rating: 4.8, image: 'MC' },
-        { name: 'Emily Williams', title: 'Investment Analyst', exp: '8 years', rating: 4.7, image: 'EW' }
+        { name: 'Rahul Mehta', title: 'Loan Specialist', exp: '10 years', rating: 4.9, image: 'RM' },
+        { name: 'Priya Sharma', title: 'Senior Credit Officer', exp: '8 years', rating: 4.8, image: 'PS' },
       ],
       faqs: [
-        { q: 'What is the minimum investment required?', a: 'We work with clients at all investment levels, starting from $10,000.' },
-        { q: 'How often will my portfolio be reviewed?', a: 'Portfolios are reviewed quarterly, with additional reviews available upon request.' }
+        { q: 'What is the minimum credit score required?', a: 'A credit score of 700+ is preferred, but we also consider other factors.' },
+        { q: 'How long does approval take?', a: 'Approval typically takes 24-48 hours after document submission.' }
       ]
     },
     {
       id: 2,
-      name: 'Retirement Planning',
-      category: 'retirement',
-      icon: FaTree,
+      name: 'Over Draft Facility',
+      category: 'loan',
+      icon: FaPercent,
       color: 'from-blue-500 to-blue-600',
-      rating: 4.8,
-      reviews: 987,
-      price: '$349',
-      duration: '75 min',
-      description: 'Comprehensive retirement planning to secure your golden years.',
-      longDescription: 'Plan your retirement with confidence. Our advisors help you determine how much you need to save, choose the right retirement accounts, and create a sustainable withdrawal strategy.',
+      rating: 4.7,
+      reviews: 890,
+      price: 'Interest only on used amount',
+      duration: '30 min',
+      description: 'Overdraft facility against savings or fixed deposits.',
+      longDescription: 'Access additional funds whenever you need them with our overdraft facility. Withdraw more than your account balance up to an approved limit, and pay interest only on the amount used.',
       features: [
-        'Retirement income modeling',
-        'Social Security optimization',
-        '401(k) and IRA analysis',
-        'Required minimum distribution planning',
-        'Healthcare cost planning',
-        'Estate planning integration'
+        'Overdraft up to ₹20,00,000',
+        'Interest charged only on utilized amount',
+        'No prepayment penalties',
+        'Flexible repayment',
+        'Available against FD, property, or salary',
+        'Lifetime approval with annual renewal'
       ],
       benefits: [
-        'Peace of mind for retirement',
-        'Tax-efficient withdrawal strategies',
-        'Sustainable income stream',
-        'Legacy planning'
+        'Pay interest only on used amount',
+        'Emergency fund access',
+        'No fixed EMI burden',
+        'Improve cash flow management'
       ],
       advisors: [
-        { name: 'David Thompson', title: 'Retirement Specialist', exp: '20 years', rating: 4.9, image: 'DT' },
-        { name: 'Lisa Garcia', title: 'Senior Planner', exp: '14 years', rating: 4.8, image: 'LG' }
+        { name: 'Ankit Desai', title: 'Banking Specialist', exp: '12 years', rating: 4.7, image: 'AD' },
+        { name: 'Neha Gupta', title: 'Relationship Manager', exp: '7 years', rating: 4.6, image: 'NG' }
       ],
       faqs: [
-        { q: 'At what age should I start retirement planning?', a: 'Its never too early. We recommend starting in your 20s or 30s for maximum benefit.' },
-        { q: 'How much do I need to retire?', a: 'This varies based on lifestyle, but we typically recommend 70-80% of pre-retirement income.' }
+        { q: 'What assets can I pledge for overdraft?', a: 'Fixed deposits, property, or your salary account can be used.' },
+        { q: 'Is there a minimum balance requirement?', a: 'No minimum balance required, but the overdraft limit is based on your relationship with the bank.' }
       ]
     },
     {
       id: 3,
-      name: 'Tax Planning & Preparation',
-      category: 'tax',
-      icon: FaFileInvoiceDollar,
+      name: 'Home Loan',
+      category: 'loan',
+      icon: FaHome,
       color: 'from-blue-500 to-blue-600',
       rating: 4.9,
-      reviews: 2156,
-      price: '$399',
-      duration: '90 min',
-      description: 'Strategic tax planning to minimize your liability and maximize refunds.',
-      longDescription: 'Navigate the complex world of taxes with our expert CPAs. We provide year-round tax planning and preparation services for individuals and businesses.',
+      reviews: 2150,
+      price: 'Starting at 8.5% APR',
+      duration: '45 min',
+      description: 'Dream home financing with attractive interest rates.',
+      longDescription: 'Make your dream home a reality with our affordable home loan solutions. We offer competitive rates, flexible tenures, and expert guidance throughout the home buying process.',
       features: [
-        'Tax return preparation',
-        'Tax planning strategies',
-        'IRS audit representation',
-        'Business tax consulting',
-        'International tax services',
-        'Estate and gift tax planning'
+        'Loan up to 90% of property value',
+        'Tenure up to 30 years',
+        'Balance transfer facility',
+        'Top-up loan option',
+        'Subvention schemes available',
+        'Quick processing and disbursal'
       ],
       benefits: [
-        'Maximize tax refunds',
-        'Minimize audit risk',
-        'Strategic tax planning',
-        'Year-round support'
+        'Tax benefits under Section 24 & 80C',
+        'Lowest interest rates',
+        'Minimal processing fees',
+        'Doorstep document pickup'
       ],
       advisors: [
-        { name: 'Robert Martinez', title: 'CPA, Tax Director', exp: '18 years', rating: 4.9, image: 'RM' },
-        { name: 'Jennifer Lee', title: 'Senior Tax Manager', exp: '12 years', rating: 4.8, image: 'JL' }
+        { name: 'Vikram Singh', title: 'Home Loan Expert', exp: '15 years', rating: 4.9, image: 'VS' },
+        { name: 'Kavita Reddy', title: 'Mortgage Advisor', exp: '10 years', rating: 4.8, image: 'KR' }
       ],
       faqs: [
-        { q: 'When should I start tax planning?', a: 'Tax planning is most effective when done year-round, not just at tax time.' },
-        { q: 'Do you handle business taxes?', a: 'Yes, we provide comprehensive tax services for businesses of all sizes.' }
+        { q: 'What is the maximum loan amount I can get?', a: 'Typically up to ₹5 crore depending on income and property value.' },
+        { q: 'How much down payment is required?', a: 'Usually 10-20% of the property value as down payment.' }
       ]
     },
     {
       id: 4,
-      name: 'Home Loans & Mortgages',
+      name: 'Property Loan',
       category: 'loan',
-      icon: FaHome,
+      icon: FaLandmark,
       color: 'from-blue-500 to-blue-600',
-      rating: 4.7,
-      reviews: 1678,
-      price: 'Free',
+      rating: 4.8,
+      reviews: 1675,
+      price: 'Starting at 9.5% APR',
       duration: '45 min',
-      description: 'Expert guidance on home loans, mortgages, and refinancing options.',
-      longDescription: 'Find the best mortgage solution for your dream home. We compare rates from multiple lenders and guide you through the entire home buying process.',
+      description: 'Loan against residential or commercial property.',
+      longDescription: 'Unlock the value of your property with our property loan (Loan Against Property). Get high-value loans at attractive interest rates for business or personal needs.',
       features: [
-        'Mortgage rate comparison',
-        'Pre-qualification assistance',
-        'First-time home buyer programs',
-        'Refinancing options',
-        'FHA, VA, and conventional loans',
-        'Down payment assistance'
+        'Loan up to 70% of property value',
+        'High loan amount up to ₹10 crore',
+        'Flexible tenure up to 15 years',
+        'Low processing fees',
+        'Both residential & commercial property accepted',
+        'Quick disbursal within 7 days'
       ],
       benefits: [
-        'Best interest rates',
-        'Streamlined approval process',
-        'Expert guidance',
-        'Multiple lender options'
+        'Lower interest rates than personal loans',
+        'Long repayment tenure',
+        'No restriction on end use',
+        'Continue using the property'
       ],
       advisors: [
-        { name: 'Amanda Foster', title: 'Mortgage Specialist', exp: '10 years', rating: 4.7, image: 'AF' },
-        { name: 'James Wilson', title: 'Loan Officer', exp: '8 years', rating: 4.6, image: 'JW' }
+        { name: 'Sanjay Verma', title: 'Property Finance Expert', exp: '18 years', rating: 4.8, image: 'SV' },
+        { name: 'Pooja Nair', title: 'Legal & Valuation Head', exp: '12 years', rating: 4.7, image: 'PN' }
       ],
       faqs: [
-        { q: 'What credit score do I need?', a: 'Most conventional loans require 620+, but we can help with options for lower scores.' },
-        { q: 'How much down payment is required?', a: 'It varies from 3% to 20% depending on loan type. First-time buyer programs may offer 0% down.' }
+        { q: 'What types of properties are accepted?', a: 'Residential apartments, houses, and commercial properties are accepted.' },
+        { q: 'Do I need to transfer property ownership?', a: 'No, you retain ownership; only a lien is created on the property.' }
       ]
     },
     {
       id: 5,
-      name: 'Life Insurance',
-      category: 'insurance',
-      icon: FaHeartbeat,
+      name: 'Credit Card',
+      category: 'loan',
+      icon: FaCrown,
       color: 'from-blue-500 to-blue-600',
-      rating: 4.8,
-      reviews: 876,
-      price: 'Free',
-      duration: '45 min',
-      description: 'Protect your loved ones with the right life insurance coverage.',
-      longDescription: 'Secure your family\'s financial future with comprehensive life insurance solutions. We help you choose between term, whole life, and universal life policies.',
+      rating: 4.7,
+      reviews: 3450,
+      price: 'Annual fee from ₹0',
+      duration: '20 min',
+      description: 'Premium credit cards with exclusive benefits and rewards.',
+      longDescription: 'Choose from a range of credit cards tailored to your lifestyle. Enjoy rewards, cashback, travel benefits, and exclusive privileges with our premium credit card offerings.',
       features: [
-        'Term life insurance',
-        'Whole life insurance',
-        'Universal life insurance',
-        'Final expense coverage',
-        'Business succession planning',
-        'Estate liquidity planning'
+        'Credit limit up to ₹20,00,000',
+        'Reward points on every transaction',
+        'Complimentary lounge access',
+        'Fuel surcharge waiver',
+        'Interest-free credit up to 50 days',
+        'Contactless payment'
       ],
       benefits: [
-        'Financial security for family',
-        'Tax-free death benefit',
-        'Cash value accumulation',
-        'Peace of mind'
+        'Build credit history',
+        'Emergency fund access',
+        'Exclusive discounts and offers',
+        'Worldwide acceptance'
       ],
       advisors: [
-        { name: 'Patricia Brown', title: 'Insurance Specialist', exp: '16 years', rating: 4.8, image: 'PB' },
-        { name: 'Thomas Anderson', title: 'Senior Agent', exp: '12 years', rating: 4.7, image: 'TA' }
+        { name: 'Amit Khanna', title: 'Credit Card Specialist', exp: '8 years', rating: 4.7, image: 'AK' },
+        { name: 'Shreya Joshi', title: 'Product Manager', exp: '6 years', rating: 4.6, image: 'SJ' }
       ],
       faqs: [
-        { q: 'How much life insurance do I need?', a: 'A common rule is 10-12 times your annual income, but we can calculate your exact needs.' },
-        { q: 'What\'s the difference between term and whole life?', a: 'Term provides coverage for a specific period, while whole life offers lifetime coverage with cash value.' }
+        { q: 'What documents are needed?', a: 'ID proof, address proof, income proof, and recent photographs.' },
+        { q: 'How is the credit limit decided?', a: 'Based on your income, credit score, and existing liabilities.' }
       ]
     },
     {
       id: 6,
-      name: 'Wealth Management',
-      category: 'investment',
-      icon: FaCrown,
+      name: 'Car Loan',
+      category: 'loan',
+      icon: FaCar,
       color: 'from-blue-500 to-blue-600',
-      rating: 5.0,
-      reviews: 543,
-      price: '$599',
-      duration: '90 min',
-      description: 'Comprehensive wealth management for high-net-worth individuals.',
-      longDescription: 'Our premier wealth management service provides comprehensive financial planning and investment management for affluent individuals and families.',
+      rating: 4.8,
+      reviews: 1890,
+      price: 'Starting at 8.7% APR',
+      duration: '30 min',
+      description: 'Drive your dream car with easy financing options.',
+      longDescription: 'Get behind the wheel of your dream car with our quick and affordable car loans. We offer 100% on-road funding with flexible repayment options and minimal documentation.',
       features: [
-        'Comprehensive financial planning',
-        'Alternative investments',
-        'Estate planning',
-        'Philanthropic planning',
-        'Family office services',
-        'Business succession planning'
+        '100% on-road funding available',
+        'Tenure up to 7 years',
+        'Low interest rates',
+        'Quick approval & disbursal',
+        'Used car financing available',
+        'Balance transfer facility'
       ],
       benefits: [
-        'Holistic wealth management',
-        'Preserve and grow wealth',
-        'Legacy planning',
-        'Tax optimization'
+        'Instant approval',
+        'No prepayment charges after 1 year',
+        'Flexible EMI options',
+        'Low processing fees'
       ],
       advisors: [
-        { name: 'William Chen', title: 'Wealth Manager', exp: '22 years', rating: 5.0, image: 'WC' },
-        { name: 'Elizabeth Taylor', title: 'Senior Advisor', exp: '18 years', rating: 4.9, image: 'ET' }
+        { name: 'Rohan Patil', title: 'Auto Loan Expert', exp: '9 years', rating: 4.8, image: 'RP' },
+        { name: 'Meera Iyer', title: 'Vehicle Finance Advisor', exp: '7 years', rating: 4.7, image: 'MI' }
       ],
       faqs: [
-        { q: 'What assets under management are required?', a: 'We typically work with clients who have $1M+ in investable assets.' },
-        { q: 'How are fees structured?', a: 'We use a fee-only model based on a percentage of assets under management.' }
+        { q: 'Can I get a loan for a used car?', a: 'Yes, we finance used cars up to 5 years old with proper documentation.' },
+        { q: 'What is the maximum loan amount?', a: 'Up to ₹1 crore depending on car value and income.' }
       ]
     },
     {
       id: 7,
-      name: 'Business Banking',
-      category: 'banking',
-      icon: FaBriefcase,
-      color: 'from-blue-500 to-blue-600',
-      rating: 4.7,
-      reviews: 654,
-      price: 'Free',
-      duration: '30 min',
-      description: 'Tailored banking solutions for businesses of all sizes.',
-      longDescription: 'Streamline your business finances with our comprehensive banking services. From merchant services to cash management, we have you covered.',
-      features: [
-        'Business checking accounts',
-        'Merchant services',
-        'Cash management',
-        'Business credit cards',
-        'Lines of credit',
-        'Payroll services'
-      ],
-      benefits: [
-        'Simplified banking',
-        'Competitive rates',
-        '24/7 online access',
-        'Dedicated support'
-      ],
-      advisors: [
-        { name: 'Richard Miles', title: 'Business Banker', exp: '14 years', rating: 4.7, image: 'RM' },
-        { name: 'Susan Clark', title: 'Commercial Specialist', exp: '11 years', rating: 4.6, image: 'SC' }
-      ],
-      faqs: [
-        { q: 'What documents do I need to open a business account?', a: 'Typically need EIN, business license, formation documents, and identification.' },
-        { q: 'Do you offer merchant services?', a: 'Yes, we provide comprehensive payment processing solutions.' }
-      ]
-    },
-    {
-      id: 8,
-      name: 'Estate Planning',
-      category: 'estate',
-      icon: FaBalanceScale,
+      name: 'Insurance Policy',
+      category: 'insurance',
+      icon: FaShieldAlt,
       color: 'from-blue-500 to-blue-600',
       rating: 4.9,
-      reviews: 432,
-      price: '$449',
-      duration: '90 min',
-      description: 'Protect your legacy with comprehensive estate planning.',
-      longDescription: 'Ensure your assets are distributed according to your wishes with our estate planning services. We help you create wills, trusts, and powers of attorney.',
+      reviews: 2340,
+      price: 'Custom premium',
+      duration: '40 min',
+      description: 'Comprehensive insurance policies for life, health, and assets.',
+      longDescription: 'Secure your future and protect what matters most with our comprehensive insurance solutions. Choose from life, health, vehicle, and term insurance plans designed for your needs.',
       features: [
-        'Will preparation',
-        'Trust establishment',
-        'Power of attorney',
-        'Healthcare directives',
-        'Estate tax planning',
-        'Asset protection'
+        'Term life insurance up to ₹10 crore',
+        'Health insurance with ₹1 crore cover',
+        'Vehicle insurance with zero depreciation',
+        'Critical illness cover',
+        'Family floater plans',
+        'Tax benefits under Section 80C & 80D'
       ],
       benefits: [
-        'Asset protection',
-        'Tax minimization',
-        'Family harmony',
-        'Legacy preservation'
+        'Financial security for family',
+        'Cashless hospitalization',
+        'Tax savings',
+        'Lifetime renewability'
       ],
       advisors: [
-        { name: 'Margaret White', title: 'Estate Attorney', exp: '20 years', rating: 4.9, image: 'MW' },
-        { name: 'Steven Harris', title: 'Trust Officer', exp: '15 years', rating: 4.8, image: 'SH' }
+        { name: 'Deepak Mishra', title: 'Insurance Specialist', exp: '14 years', rating: 4.9, image: 'DM' },
+        { name: 'Anjali Nair', title: 'Claims Expert', exp: '10 years', rating: 4.8, image: 'AN' }
       ],
       faqs: [
-        { q: 'Do I need a trust or just a will?', a: 'It depends on your assets and goals. Trusts offer more control and can help avoid probate.' },
-        { q: 'How often should I update my estate plan?', a: 'Review every 3-5 years or after major life events like marriage, divorce, or inheritance.' }
+        { q: 'What is the claim settlement ratio?', a: 'We maintain a 98% claim settlement ratio for all policies.' },
+        { q: 'Can I buy policies for my parents?', a: 'Yes, family floater plans cover parents and in-laws as well.' }
       ]
     }
   ];
@@ -394,10 +323,9 @@ const ServicesPage = () => {
         <p className="text-gray-600 text-sm mb-4">{service.description}</p>
 
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-2">
-            <span className="text-gray-900 font-semibold">{service.price}</span>
-            <span className="text-gray-400">•</span>
-            <span className="text-gray-600 text-sm flex items-center">
+          <div className="flex flex-col">
+            <span className="text-gray-900 font-semibold text-sm">{service.price}</span>
+            <span className="text-gray-500 text-xs flex items-center mt-1">
               <FaClock className="h-3 w-3 mr-1" />
               {service.duration}
             </span>
@@ -621,9 +549,11 @@ const ServicesPage = () => {
                   Next
                 </button>
               ) : (
-                <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-                  Confirm Booking
-                </button>
+                <Link to={'/contact'}>
+                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
+                    Confirm Booking
+                  </button>
+                </Link>
               )}
             </div>
           </div>
@@ -635,15 +565,12 @@ const ServicesPage = () => {
   return (
     <Wraper>
       <div className="min-h-screen bg-gray-50 pt-20">
-        {/* Header */}
-
-
         <div className="container mx-auto px-4 py-8">
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <h1 className="text-5xl font-bold text-gray-900 mb-4">Our Services</h1>
+            <h1 className="text-5xl font-bold text-gray-900 mb-4">Our Financial Services</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive financial solutions tailored to your needs. From investment advice to retirement planning, we're here to help you achieve your goals.
+              Tailored loan and insurance solutions to meet your financial needs. From personal loans to comprehensive insurance policies, we're here to help.
             </p>
           </div>
 
@@ -666,7 +593,7 @@ const ServicesPage = () => {
             </div>
             <div className="bg-white rounded-xl shadow-lg p-6 text-center border border-gray-200">
               <FaGem className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-              <p className="text-3xl font-bold text-gray-900">$2B+</p>
+              <p className="text-3xl font-bold text-gray-900">₹2B+</p>
               <p className="text-gray-600 text-sm">Assets Managed</p>
             </div>
           </div>
@@ -720,8 +647,8 @@ const ServicesPage = () => {
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <HiOutlineLightBulb className="h-8 w-8 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Innovative Approach</h3>
-                <p className="text-gray-600">Cutting-edge tools and strategies for optimal results</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Fast & Transparent</h3>
+                <p className="text-gray-600">Quick approvals with no hidden charges</p>
               </div>
             </div>
           </section>
@@ -730,27 +657,63 @@ const ServicesPage = () => {
           <section className="mt-16">
             <h2 className="text-3xl font-bold text-gray-900 text-center mb-8">What Our Clients Say</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-                  <div className="flex items-center space-x-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <FaStar key={i} className="h-4 w-4 text-yellow-400" />
-                    ))}
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
+                <div className="flex items-center space-x-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar key={i} className="h-4 w-4 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4">
+                  "The home loan process was incredibly smooth. The team helped me get the best interest rate and handled all paperwork. Highly recommended!"
+                </p>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white font-semibold">
+                    AK
                   </div>
-                  <p className="text-gray-700 mb-4">
-                    "Excellent service! The team was professional, knowledgeable, and helped me achieve my financial goals. Highly recommended!"
-                  </p>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white font-semibold">
-                      JD
-                    </div>
-                    <div>
-                      <p className="text-gray-900 font-semibold">John Doe</p>
-                      <p className="text-gray-500 text-sm">Home Loan Client</p>
-                    </div>
+                  <div>
+                    <p className="text-gray-900 font-semibold">Amit Kumar</p>
+                    <p className="text-gray-500 text-sm">Home Loan Client</p>
                   </div>
                 </div>
-              ))}
+              </div>
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
+                <div className="flex items-center space-x-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar key={i} className="h-4 w-4 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4">
+                  "Best insurance policy advice I've ever received. The advisor explained everything clearly and helped me choose the perfect plan for my family."
+                </p>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white font-semibold">
+                    SP
+                  </div>
+                  <div>
+                    <p className="text-gray-900 font-semibold">Sunita Patel</p>
+                    <p className="text-gray-500 text-sm">Insurance Client</p>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-200">
+                <div className="flex items-center space-x-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar key={i} className="h-4 w-4 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4">
+                  "Got my car loan approved within 24 hours with the lowest interest rate. The team was very professional and helpful throughout."
+                </p>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center text-white font-semibold">
+                    RS
+                  </div>
+                  <div>
+                    <p className="text-gray-900 font-semibold">Rajesh Sharma</p>
+                    <p className="text-gray-500 text-sm">Car Loan Client</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -761,12 +724,16 @@ const ServicesPage = () => {
               Schedule a free consultation with one of our expert advisors today and take the first step toward your financial goals.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
-                Schedule Consultation
-              </button>
-              <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors">
-                Learn More
-              </button>
+              <Link to={'/contact'}>
+                <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                  Schedule Consultation
+                </button>
+              </Link>
+              <Link to={'/contact'}>
+                <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-colors">
+                  Learn More
+                </button>
+              </Link>
             </div>
           </section>
 
@@ -797,7 +764,7 @@ const ServicesPage = () => {
               <FaRegBuilding className="h-5 w-5 text-blue-600" />
               <div>
                 <p className="text-gray-600 text-sm">Visit Office</p>
-                <p className="text-gray-900 font-semibold">123 Finance Ave</p>
+                <p className="text-gray-900 font-semibold">VDS Finance Solution</p>
               </div>
             </div>
           </div>

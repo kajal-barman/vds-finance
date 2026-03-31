@@ -91,7 +91,7 @@ const Navbar = () => {
       icon: <FaCalculator />,
       submenu: [
         { title: 'Credit Card', icon: <FaCreditCard />, path: '/credit-card' },
-        { title: 'EMI Calculator', icon: <FaCalculator />, path: '/emi-calculator' },
+        // { title: 'EMI Calculator', icon: <FaCalculator />, path: '/emi-calculator' },
         { title: 'Loans', icon: <FaHandHoldingUsd />, path: '/loan' },
       ]
     },
@@ -132,8 +132,8 @@ const Navbar = () => {
               <Link to="/services" className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-all duration-300 hover:translate-y-[-2px]">
                 Services
               </Link>
-              <Link to="/foreclosure-calculator" className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-all duration-300 hover:translate-y-[-2px]">
-                Foreclosure Calculator
+              <Link to="/emi-calculator" className="text-gray-700 hover:text-blue-800 px-3 py-2 text-sm font-medium transition-all duration-300 hover:translate-y-[-2px]">
+                EMI Calculator
               </Link>
 
 

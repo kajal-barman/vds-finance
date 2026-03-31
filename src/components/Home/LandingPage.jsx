@@ -6,7 +6,7 @@ import { landingSlides } from '../../data';
 
 const incrementsPerSlide = 100;
 
-// Improved animation variants
+// Improved animation variants with smooth transitions
 const slideVariants = {
     enter: (direction) => ({
         x: direction > 0 ? 1000 : -1000,
@@ -40,24 +40,36 @@ const LandingPage = () => {
     const currentSlide = Math.floor(counter / incrementsPerSlide) % landingSlides.length;
     const slide = landingSlides[currentSlide];
 
+    // Auto-slide every 5 seconds (5000ms)
     useEffect(() => {
         if (!isPaused) {
             intervalRef.current = setInterval(() => {
-                setCounter((prev) => prev + 1);
-            }, 50);
+                // Move to next slide
+                setDirection(1);
+                setCounter((prev) => {
+                    const nextSlide = Math.floor((prev + incrementsPerSlide) / incrementsPerSlide) % landingSlides.length;
+                    return (nextSlide * incrementsPerSlide);
+                });
+            }, 5000); // 5 seconds interval
         }
         return () => clearInterval(intervalRef.current);
-    }, [isPaused]);
+    }, [isPaused, landingSlides.length]);
 
     const handleSlideChange = (index) => {
         const newDirection = index > currentSlide ? 1 : -1;
         setDirection(newDirection);
         setCounter(index * incrementsPerSlide);
+        
+        // Reset interval timer
         clearInterval(intervalRef.current);
         if (!isPaused) {
             intervalRef.current = setInterval(() => {
-                setCounter((prev) => prev + 1);
-            }, 50);
+                setDirection(1);
+                setCounter((prev) => {
+                    const nextSlide = Math.floor((prev + incrementsPerSlide) / incrementsPerSlide) % landingSlides.length;
+                    return (nextSlide * incrementsPerSlide);
+                });
+            }, 5000);
         }
     };
 
@@ -70,6 +82,14 @@ const LandingPage = () => {
     const handleInteractionEnd = () => {
         setIsPaused(false);
         setIsHovered(false);
+        // Restart auto-slide
+        intervalRef.current = setInterval(() => {
+            setDirection(1);
+            setCounter((prev) => {
+                const nextSlide = Math.floor((prev + incrementsPerSlide) / incrementsPerSlide) % landingSlides.length;
+                return (nextSlide * incrementsPerSlide);
+            });
+        }, 5000);
     };
 
     const goToNextSlide = () => {
@@ -86,7 +106,7 @@ const LandingPage = () => {
 
     return (
         <section
-            className="relative w-full  via-white to-white md:mt-0 mt-10 flex flex-col items-center justify-center overflow-hidden"
+            className="relative w-full via-white to-white md:mt-0 mt-10 flex flex-col items-center justify-center overflow-hidden"
             onMouseEnter={handleInteractionStart}
             onMouseLeave={handleInteractionEnd}
             onTouchStart={handleInteractionStart}
@@ -130,7 +150,7 @@ const LandingPage = () => {
 
             {/* Main Slides Container */}
             <div className="relative w-full md:h-[83vh] min-h-[80vh] overflow-hidden rounded-b-3xl">
-                <AnimatePresence custom={direction} initial={false}>
+                <AnimatePresence custom={direction} initial={false} mode="wait">
                     <motion.div
                         key={currentSlide}
                         custom={direction}
@@ -139,8 +159,12 @@ const LandingPage = () => {
                         animate="center"
                         exit="exit"
                         transition={{
-                            x: { type: "spring", stiffness: 300, damping: 30 },
-                            opacity: { duration: 0.2 }
+                            x: { 
+                                type: "tween", 
+                                duration: 0.8,
+                                ease: "easeInOut"
+                            },
+                            opacity: { duration: 0.6 }
                         }}
                         className={`w-full h-full flex bg-gradient-to-t ${slide.fromBg || 'from-purple-100'} to-white flex-col md:flex-row items-center justify-center px-2 md:px-6 gap-3`}
                     >
@@ -181,20 +205,33 @@ const LandingPage = () => {
                     <motion.button
                         key={index}
                         onClick={() => handleSlideChange(index)}
-                        className={`w-4 h-2 rounded-full border transition-colors duration-300 ${currentSlide === index ? 'scale-120' : ''} ${slide.btnBgColor} ${slide.btnTextColor}`}
+                        className={`w-4 h-2 rounded-full border transition-colors duration-300 ${currentSlide === index ? 'scale-120' : ''}`}
                         aria-label={`Go to slide ${index + 1}`}
                         whileHover={{ scale: 1.2 }}
                         whileTap={{ scale: 0.9 }}
                         animate={{
                             width: currentSlide === index ? 24 : 16,
-                            backgroundColor: currentSlide === index ? slide.btnBgColor?.replace('bg-', '') : 'rgba(255, 255, 255, 0.5)'
+                            backgroundColor: currentSlide === index ? (slide.btnBgColor?.replace('bg-', '') || '#3b82f6') : 'rgba(0, 0, 0, 0.3)'
                         }}
                         transition={{ type: "spring", stiffness: 200, damping: 10 }}
                     />
                 ))}
             </div>
+
+            {/* Timer Progress Bar */}
+            {!isPaused && (
+                <motion.div
+                    className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 5, ease: "linear" }}
+                    onAnimationComplete={() => {
+                        // Progress bar animation completed, slide will change automatically
+                    }}
+                />
+            )}
         </section>
     );
 };
 
-export default LandingPage;  
+export default LandingPage;
