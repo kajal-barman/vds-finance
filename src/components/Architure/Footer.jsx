@@ -91,7 +91,7 @@ const Footer = () => {
   // Contact info
   const contactInfo = [
     { icon: <FaPhone />, text: '01204981142', subtext: '24/7 Customer Support' },
-    { icon: <FaEnvelope />, text: 'support@vdsfinancesolution.com', subtext: 'We reply within 24hrs' },
+    { icon: <FaEnvelope />, text: 'support@ vdsfinance solution.com', subtext: 'We reply within 24hrs' },
     { icon: <FaMapMarkerAlt />, text: 'D Block, D-36, Noida, Sector-2, UP(GB.N), 201301', subtext: 'Noida, INDIA' },
     { icon: <FaClock />, text: 'Mon - Sat: 9:00 AM - 7:00 PM', subtext: 'Saturday: 10:00 AM - 4:00 PM' }
   ];

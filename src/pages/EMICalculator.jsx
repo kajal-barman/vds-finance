@@ -53,7 +53,6 @@ const CombinedLoanCalculator = () => {
   const [prepaymentFrequency, setPrepaymentFrequency] = useState('none');
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [selectedLoanType, setSelectedLoanType] = useState('home');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   // EMI Results state
@@ -92,9 +91,9 @@ const CombinedLoanCalculator = () => {
     { id: 'home', name: 'Home Loan', icon: <FaHome />, rate: 8.5, minAmount: 500000, maxAmount: 10000000, description: 'Best for buying or constructing a house' },
     { id: 'car', name: 'Car Loan', icon: <FaCar />, rate: 9.5, minAmount: 100000, maxAmount: 5000000, description: 'For purchasing new or used vehicles' },
     { id: 'personal', name: 'Personal Loan', icon: <FaHeart />, rate: 12.5, minAmount: 50000, maxAmount: 2500000, description: 'For any personal expenses or emergencies' },
-    { id: 'education', name: 'Education Loan', icon: <MdCastForEducation />, rate: 10.5, minAmount: 100000, maxAmount: 5000000, description: 'For higher education in India or abroad' },
+    // { id: 'education', name: 'Education Loan', icon: <MdCastForEducation />, rate: 10.5, minAmount: 100000, maxAmount: 5000000, description: 'For higher education in India or abroad' },
     { id: 'business', name: 'Business Loan', icon: <FaBusinessTime />, rate: 11.5, minAmount: 200000, maxAmount: 10000000, description: 'For business expansion or working capital' },
-    { id: 'gold', name: 'Gold Loan', icon: <FaGem />, rate: 7.5, minAmount: 10000, maxAmount: 2000000, description: 'Loan against gold ornaments' },
+    // { id: 'gold', name: 'Gold Loan', icon: <FaGem />, rate: 7.5, minAmount: 10000, maxAmount: 2000000, description: 'Loan against gold ornaments' },
   ];
 
   const currentLoanType = loanTypes.find(type => type.id === selectedLoanType) || loanTypes[0];
@@ -294,7 +293,6 @@ const CombinedLoanCalculator = () => {
   const handleLoanTypeSelect = (type) => {
     setSelectedLoanType(type.id);
     setInterestRate(type.rate);
-    setIsDropdownOpen(false);
     if (loanAmount < type.minAmount) {
       setLoanAmount(type.minAmount);
     } else if (loanAmount > type.maxAmount) {
@@ -360,49 +358,32 @@ const CombinedLoanCalculator = () => {
           {/* EMI CALCULATOR TAB */}
           {activeMainTab === 'emi' && (
             <div className="animate-fadeIn">
-              {/* Loan Type Dropdown */}
+              {/* Loan Type Selection Row - Horizontal Scrollable Cards */}
               <div className="mb-8">
                 <h2 className="text-lg font-semibold text-gray-700 mb-4">Select Loan Type</h2>
-                <div className="relative">
-                  <button
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="w-full bg-white border-2 border-gray-200 rounded-xl px-6 py-4 text-left flex items-center justify-between hover:border-blue-300 transition-all duration-300"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="text-2xl text-blue-600">{currentLoanType.icon}</span>
-                      <div>
-                        <p className="font-semibold text-gray-800">{currentLoanType.name}</p>
-                        <p className="text-sm text-gray-500">{currentLoanType.description}</p>
+                <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                  {loanTypes.map((type) => (
+                    <button
+                      key={type.id}
+                      onClick={() => handleLoanTypeSelect(type)}
+                      className={`flex-shrink-0 w-48 p-4 rounded-xl text-left transition-all duration-300 border-2 ${
+                        selectedLoanType === type.id
+                          ? 'bg-blue-50 border-blue-500 shadow-md transform scale-105'
+                          : 'bg-white border-gray-200 hover:border-blue-300 hover:shadow-md'
+                      }`}
+                    >
+                      <div className="flex flex-col items-center text-center">
+                        <span className={`text-3xl mb-2 ${selectedLoanType === type.id ? 'text-blue-600' : 'text-gray-600'}`}>
+                          {type.icon}
+                        </span>
+                        <p className={`font-semibold ${selectedLoanType === type.id ? 'text-blue-600' : 'text-gray-800'}`}>
+                          {type.name}
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">{type.description}</p>
+                        <p className="text-sm font-bold text-blue-600 mt-2">{type.rate}% p.a.</p>
                       </div>
-                    </div>
-                    <FaChevronDown className={`text-gray-400 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
-                  </button>
-
-                  {isDropdownOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg z-20 max-h-96 overflow-y-auto">
-                      {loanTypes.map((type) => (
-                        <button
-                          key={type.id}
-                          onClick={() => handleLoanTypeSelect(type)}
-                          className={`w-full px-6 py-4 text-left flex items-center gap-3 hover:bg-blue-50 transition-all duration-200 border-b border-gray-100 last:border-0 ${selectedLoanType === type.id ? 'bg-blue-50' : ''
-                            }`}
-                        >
-                          <span className={`text-2xl ${selectedLoanType === type.id ? 'text-blue-600' : 'text-gray-600'}`}>
-                            {type.icon}
-                          </span>
-                          <div className="flex-1">
-                            <div className="flex items-center justify-between">
-                              <p className={`font-semibold ${selectedLoanType === type.id ? 'text-blue-600' : 'text-gray-800'}`}>
-                                {type.name}
-                              </p>
-                              <p className="text-sm font-bold text-blue-600">{type.rate}% p.a.</p>
-                            </div>
-                            <p className="text-xs text-gray-500 mt-1">{type.description}</p>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  )}
+                    </button>
+                  ))}
                 </div>
               </div>
 
@@ -887,6 +868,21 @@ const CombinedLoanCalculator = () => {
         }
         .animate-fadeIn {
           animation: fadeIn 0.3s ease-out;
+        }
+        /* Custom scrollbar for loan type row */
+        .scrollbar-thin::-webkit-scrollbar {
+          height: 6px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 10px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 10px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
         }
       `}</style>
     </Wraper>
