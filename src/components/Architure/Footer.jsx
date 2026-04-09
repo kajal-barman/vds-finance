@@ -83,7 +83,7 @@ const Footer = () => {
     { icon: <FaFacebookF />, url: 'https://facebook.com', color: 'hover:bg-blue-600', label: 'Facebook', bgColor: 'bg-blue-100', textColor: 'text-blue-600' },
     { icon: <FaTwitter />, url: 'https://twitter.com', color: 'hover:bg-blue-400', label: 'Twitter', bgColor: 'bg-blue-100', textColor: 'text-blue-400' },
     { icon: <FaInstagram />, url: 'https://www.instagram.com/solutionvdsfinance?igsh=MWsyMzhqcGh1Z2EwbQ==', color: 'hover:bg-pink-600', label: 'Instagram', bgColor: 'bg-pink-100', textColor: 'text-pink-600' },
-    { icon: <FaWhatsapp />, url: 'https://wa.me/919756081630?text=Hello%2C%20I%20want%20to%20talk', color: 'hover:bg-green-500', label: 'WhatsApp', bgColor: 'bg-green-100', textColor: 'text-green-500' }
+    { icon: <FaWhatsapp />, url: 'https://wa.me/919625973190?text=Hello%2C%20I%20want%20to%20talk', color: 'hover:bg-green-500', label: 'WhatsApp', bgColor: 'bg-green-100', textColor: 'text-green-500' }
   ];
 
 

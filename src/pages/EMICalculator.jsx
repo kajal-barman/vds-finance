@@ -44,7 +44,7 @@ const CombinedLoanCalculator = () => {
   const [activeMainTab, setActiveMainTab] = useState('emi'); // 'emi' or 'foreclosure'
 
   // ==================== EMI CALCULATOR STATE ====================
-  const [loanAmount, setLoanAmount] = useState(1000000);
+  const [loanAmount, setLoanAmount] = useState();
   const [interestRate, setInterestRate] = useState(8.5);
   const [loanTenure, setLoanTenure] = useState(5);
   const [tenureType, setTenureType] = useState('years');
@@ -65,7 +65,7 @@ const CombinedLoanCalculator = () => {
   const [yearlyBreakdown, setYearlyBreakdown] = useState([]);
 
   // ==================== FORECLOSURE/BALANCE TRANSFER STATE ====================
-  const [principalFc, setPrincipalFc] = useState(500000);
+  const [principalFc, setPrincipalFc] = useState();
   const [rateFc, setRateFc] = useState(11);
   const [yearsFc, setYearsFc] = useState(5);
   const [monthsElapsed, setMonthsElapsed] = useState(24);
@@ -74,7 +74,7 @@ const CombinedLoanCalculator = () => {
 
   // Foreclosure Results state
   const [emiFc, setEmiFc] = useState(0);
-  const [totalLoanAmountFc, setTotalLoanAmountFc] = useState(0);
+  const [totalLoanAmountFc, setTotalLoanAmountFc] = useState();
   const [pendingMonths, setPendingMonths] = useState(0);
   const [pendingYears, setPendingYears] = useState(0);
   const [remainingPrincipal, setRemainingPrincipal] = useState(0);
@@ -271,7 +271,7 @@ const CombinedLoanCalculator = () => {
   };
 
   const resetEMICalculator = () => {
-    setLoanAmount(1000000);
+    setLoanAmount(0);
     setInterestRate(8.5);
     setLoanTenure(5);
     setTenureType('years');
@@ -282,7 +282,7 @@ const CombinedLoanCalculator = () => {
   };
 
   const resetForeclosureCalculator = () => {
-    setPrincipalFc(500000);
+    setPrincipalFc(0);
     setRateFc(11);
     setYearsFc(5);
     setMonthsElapsed(24);
