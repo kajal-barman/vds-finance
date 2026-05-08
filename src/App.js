@@ -18,7 +18,7 @@ import FAQS from './pages/FAQS'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfUse from './pages/TermsOfUse'
 import Security from './pages/Security'
-
+import Leads from './pages/Leads'
 import { Routes, Route } from 'react-router-dom'
 
 
@@ -45,7 +45,7 @@ const App = () => {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfUse />} />
         <Route path="/security" element={<Security />} />
-       
+       <Route path="/leads" element={<Leads />} />
       </Routes>
 
     </div>

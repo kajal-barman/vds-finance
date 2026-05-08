@@ -9,6 +9,7 @@ import {
   FiSend
 } from 'react-icons/fi';
 import { HiOutlineCheck } from 'react-icons/hi';
+import axios from 'axios';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ const Contact = () => {
     loanAmount: '',
     message: ''
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -37,20 +38,20 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setError('');
-    
+
     try {
       // Here you would typically send data to your backend API
       // For now, we'll simulate an API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      let data = await axios.post("http://localhost:8080/api/lead/new", formData)
+
       console.log('Form submitted:', formData);
-      
+
       // Show browser alert
       alert('✅ Message sent successfully! Our team will get back to you within 24 hours.');
-      
+
       // Show success message
       setShowSuccess(true);
-      
+
       // Reset form
       setFormData({
         firstName: '',
@@ -61,12 +62,12 @@ const Contact = () => {
         loanAmount: '',
         message: ''
       });
-      
+
       // Auto-hide success message after 5 seconds
       setTimeout(() => {
         setShowSuccess(false);
       }, 5000);
-      
+
     } catch (err) {
       setError('Something went wrong. Please try again.');
       alert('❌ Failed to send message. Please try again.');
@@ -292,11 +293,10 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-2 ${
-                      isSubmitting 
-                        ? 'bg-gray-400 cursor-not-allowed' 
+                    className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-2 ${isSubmitting
+                        ? 'bg-gray-400 cursor-not-allowed'
                         : 'bg-blue-600 hover:bg-blue-700 text-white'
-                    }`}
+                      }`}
                   >
                     <FiSend className="h-5 w-5" />
                     {isSubmitting ? 'Sending...' : 'Send Message'}
