@@ -3,11 +3,13 @@ import axios from 'axios'
 
 const Leads = () => {
     const [formData, setFormData] = useState({
-        name: "",
+        fullName: "",
         email: "",
-        phoneNumber: "",
-        panCard: "",
-        dateOfBirth: ""
+        phone: "",
+        loanType: "",
+        amount: "",
+        city: "",
+        message: ""
     })
 
     const [loading, setLoading] = useState(false)
@@ -24,8 +26,8 @@ const Leads = () => {
 
     const handleSubmit = async () => {
         // Basic validation
-        if (!formData.name || !formData.email || !formData.phoneNumber || !formData.panCard || !formData.dateOfBirth) {
-            setErrorMessage("Please fill in all fields")
+        if (!formData.fullName || !formData.email || !formData.phone || !formData.loanType || !formData.amount || !formData.city) {
+            setErrorMessage("Please fill in all required fields")
             setTimeout(() => setErrorMessage(""), 3000)
             return
         }
@@ -38,18 +40,17 @@ const Leads = () => {
             return
         }
 
-        // Phone validation
+        // Phone validation (10 digits)
         const phoneRegex = /^[0-9]{10}$/
-        if (!phoneRegex.test(formData.phoneNumber)) {
+        if (!phoneRegex.test(formData.phone)) {
             setErrorMessage("Please enter a valid 10-digit phone number")
             setTimeout(() => setErrorMessage(""), 3000)
             return
         }
 
-        // PAN validation (format: ABCDE1234F)
-        const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/
-        if (!panRegex.test(formData.panCard.toUpperCase())) {
-            setErrorMessage("Please enter a valid PAN card number (e.g., ABCDE1234F)")
+        // Amount validation (positive number)
+        if (isNaN(formData.amount) || Number(formData.amount) <= 0) {
+            setErrorMessage("Please enter a valid loan amount")
             setTimeout(() => setErrorMessage(""), 3000)
             return
         }
@@ -59,14 +60,29 @@ const Leads = () => {
         setSuccessMessage("")
 
         try {
-            let data = await axios.post("http://localhost:8080/api/auth/register", formData)
+            // Prepare data according to API requirements
+            const leadData = {
+                fullName: formData.fullName,
+                phone: formData.phone,
+                email: formData.email,
+                loanType: formData.loanType,
+                amount: Number(formData.amount), // Convert to number
+                city: formData.city,
+                message: formData.message || "" // Optional field
+            }
+
+            let response = await axios.post("http://localhost:8080/api/lead/new", leadData)
+            
             setSuccessMessage("Lead submitted successfully!")
+            // Reset form
             setFormData({
-                name: "",
+                fullName: "",
                 email: "",
-                phoneNumber: "",
-                panCard: "",
-                dateOfBirth: ""
+                phone: "",
+                loanType: "",
+                amount: "",
+                city: "",
+                message: ""
             })
             setTimeout(() => setSuccessMessage(""), 3000)
         } catch (error) {
@@ -80,7 +96,7 @@ const Leads = () => {
 
     return (
         <div className='flex w-full h-screen items-center justify-center bg-gray-100'>
-            <div className='bg-white shadow-lg border p-8 flex items-center justify-center flex-col gap-5 rounded-lg w-96'>
+            <div className='bg-white shadow-lg border p-8 flex items-center justify-center flex-col gap-5 rounded-lg w-[500px] max-w-[90%]'>
                 <h2 className='text-2xl font-bold text-gray-800 mb-4'>Lead Registration</h2>
                 
                 {successMessage && (
@@ -98,9 +114,9 @@ const Leads = () => {
                 <input 
                     className='border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-blue-500'
                     type="text" 
-                    name="name" 
-                    placeholder="Enter your name"
-                    value={formData.name}
+                    name="fullName" 
+                    placeholder="Full Name *"
+                    value={formData.fullName}
                     onChange={handleChange}
                 />
                 
@@ -108,7 +124,7 @@ const Leads = () => {
                     className='border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-blue-500'
                     type="email" 
                     name="email" 
-                    placeholder="Enter your email" 
+                    placeholder="Email Address *" 
                     value={formData.email}
                     onChange={handleChange}
                 />
@@ -116,29 +132,52 @@ const Leads = () => {
                 <input 
                     className='border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-blue-500'
                     type="tel" 
-                    name="phoneNumber" 
-                    placeholder="Enter your phone number (10 digits)"
-                    value={formData.phoneNumber}
+                    name="phone" 
+                    placeholder="Phone Number (10 digits) *"
+                    value={formData.phone}
                     onChange={handleChange}
                     maxLength="10"
                 />
 
+                <select
+                    className='border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-blue-500 bg-white'
+                    name="loanType"
+                    value={formData.loanType}
+                    onChange={handleChange}
+                >
+                    <option value="">Select Loan Type *</option>
+                    <option value="Personal Loan">Personal Loan</option>
+                    <option value="Home Loan">Home Loan</option>
+                    <option value="Car Loan">Car Loan</option>
+                    <option value="Business Loan">Business Loan</option>
+                    <option value="Education Loan">Education Loan</option>
+                </select>
+
                 <input 
-                    className='border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-blue-500 uppercase'
+                    className='border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-blue-500'
+                    type="number" 
+                    name="amount" 
+                    placeholder="Loan Amount *"
+                    value={formData.amount}
+                    onChange={handleChange}
+                    min="0"
+                />
+
+                <input 
+                    className='border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-blue-500'
                     type="text" 
-                    name="panCard" 
-                    placeholder="Enter your PAN card (e.g., ABCDE1234F)"
-                    value={formData.panCard}
+                    name="city" 
+                    placeholder="City *"
+                    value={formData.city}
                     onChange={handleChange}
-                    maxLength="10"
                 />
 
-                <input 
-                    className='border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-blue-500 uppercase'
-                    type="date" 
-                    name="dateOfBirth" 
-                    placeholder="Date of birth"
-                    value={formData.dateOfBirth}
+                <textarea 
+                    className='border border-gray-300 p-2 rounded w-full focus:outline-none focus:border-blue-500 resize-vertical'
+                    name="message" 
+                    placeholder="Additional Message (Optional)"
+                    rows="3"
+                    value={formData.message}
                     onChange={handleChange}
                 />
 
@@ -147,7 +186,7 @@ const Leads = () => {
                     onClick={handleSubmit}
                     disabled={loading}
                 >
-                    {loading ? "Submitting..." : "Submit"}
+                    {loading ? "Submitting..." : "Submit Lead"}
                 </button>
             </div>
         </div>

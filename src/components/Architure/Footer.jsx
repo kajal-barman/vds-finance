@@ -114,7 +114,7 @@ const Footer = () => {
               Revolutionizing personal finance with smart technology and expert guidance. Join millions of satisfied customers on their financial journey.
             </p>
 
-            {/* Trust Badges
+            {/* Trust B adges
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full">
                 <MdVerified className="text-blue-600" />

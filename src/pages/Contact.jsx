@@ -39,10 +39,20 @@ const Contact = () => {
     setIsSubmitting(true);
     setError('');
 
+
     try {
+      let finalFormData = {
+        fullName: formData.firstName + " " + formData.lastName,
+        phone: formData.phone,
+        email: formData.email,
+        loanType: formData.loanType,
+        amount: formData.amount,
+        city: formData.city,
+        message: formData.message
+      }
       // Here you would typically send data to your backend API
       // For now, we'll simulate an API call
-      let data = await axios.post("http://localhost:8080/api/lead/new", formData)
+      let data = await axios.post("http://localhost:8080/api/lead/new", finalFormData)
 
       console.log('Form submitted:', formData);
 
@@ -294,8 +304,8 @@ const Contact = () => {
                     type="submit"
                     disabled={isSubmitting}
                     className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center gap-2 ${isSubmitting
-                        ? 'bg-gray-400 cursor-not-allowed'
-                        : 'bg-blue-600 hover:bg-blue-700 text-white'
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-blue-600 hover:bg-blue-700 text-white'
                       }`}
                   >
                     <FiSend className="h-5 w-5" />
