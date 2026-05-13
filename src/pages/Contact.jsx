@@ -52,7 +52,7 @@ const Contact = () => {
       }
       // Here you would typically send data to your backend API
       // For now, we'll simulate an API call
-      let data = await axios.post("http://localhost:8080/api/lead/new", finalFormData)
+      let data = await axios.post("http://api.vdsfinancesolution.com/api/lead/new", finalFormData)
 
       console.log('Form submitted:', formData);
 
